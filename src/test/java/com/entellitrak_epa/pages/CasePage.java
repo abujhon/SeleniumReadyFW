@@ -258,6 +258,24 @@ public class CasePage {
 	@FindBy(css = "#commentSummary tbody tr td:nth-child(4)")
 	public List<WebElement> comments_Comment;
 	
+	/*
+	 * Case Documents Section
+	 */
+	
+	@FindBy(id = "documentSummary")
+	public WebElement documentSummaryFieldset;
+	
+	@FindBy(css = "#documentSummary legend span")
+	public WebElement documentSummaryFieldsetTitle;
+	
+	@FindBy(css = "#documentSummary tbody tr a:first-child")
+	public List<WebElement> caseDocumentsFileName;
+	
+	@FindBy(css = "#documentSummary tbody tr td:nth-child(2)")
+	public List<WebElement> caseDocumentsDocumentType;
+	
+	@FindBy(css = "#documentSummary div.formButton")
+	public List<WebElement> caseDocumentsPreviewButton;
 	
 	/*
 	 * Case miscellaneous
