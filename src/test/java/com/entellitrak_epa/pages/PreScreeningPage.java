@@ -6,6 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.entellitrak_epa.utilities.Driver;
 
+/**
+ * @author Edgar Servellon
+ */
 public class PreScreeningPage {
 
 	public PreScreeningPage() {
