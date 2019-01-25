@@ -33,7 +33,7 @@ public class XrayAutomationTestClass {
 
 	@Then("^The My Cases icon displays$")
 	public void the_My_Cases_icon_displays() throws Throwable {
-	    
+	    Assert.fail();
 	}
 
 	@Then("^The Saved Searches icon displays$")
