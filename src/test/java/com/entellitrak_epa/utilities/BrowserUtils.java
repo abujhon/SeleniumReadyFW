@@ -75,6 +75,14 @@ public class BrowserUtils {
 			wait.until(ExpectedConditions.visibilityOf(element));
 		}
 		
+		public void sleep(int millsecond) {
+			try {
+				Thread.sleep(millsecond);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		
 		public void switchTabs(String title) {
