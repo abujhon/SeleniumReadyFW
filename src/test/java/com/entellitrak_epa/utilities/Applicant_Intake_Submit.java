@@ -59,7 +59,9 @@ public class Applicant_Intake_Submit {
 		signIn.submit.click();
 		
 		sqlPage.configurationTab.click();
+		browserUtils.waitForElementToBeClickable(sqlPage.exitEntelliSQL);
 		sqlPage.exitEntelliSQL.click();
+		browserUtils.waitForElementToBeClickable(sqlPage.newQueryButton);
 		sqlPage.newQueryButton.click();
 		
 		browserUtils.waitForElementToBeVisible(sqlPage.editorFrame);
