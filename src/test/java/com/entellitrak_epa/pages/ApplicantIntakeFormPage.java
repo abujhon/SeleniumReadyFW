@@ -61,6 +61,8 @@ public class ApplicantIntakeFormPage {
 	
 	public WebElement ApplicantIntakeForm_city;
 	
+	public WebElement ApplicantIntakeForm_country;
+	
 	public WebElement ApplicantIntakeForm_state;
 	
 	public WebElement ApplicantIntakeForm_zipCode;
@@ -99,9 +101,14 @@ public class ApplicantIntakeFormPage {
 	@FindBy(xpath = "//a[contains(text(), 'OF-306')]")
 	public WebElement OF306_download;
 	
+	public WebElement ApplicantIntakeForm_of306Upload;
+	
 	public WebElement saveButton;
 	
 	public WebElement submitButton;
+	
+	@FindBy(xpath = "//div[contains(text(), 'Success')]")
+	public WebElement applicantSubmitSuccess;
 	
 	
 	
