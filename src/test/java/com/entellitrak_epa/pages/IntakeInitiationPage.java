@@ -80,6 +80,8 @@ public class IntakeInitiationPage {
 	
 	public WebElement IntakeInitiation_applicantEmail;
 	
+	public WebElement IntakeInitiation_personalPhoneNumber;
+	
 	public WebElement IntakeInitiation_applicantTenureLessThan6Months_yes;
 	
 	public WebElement IntakeInitiation_applicantTenureLessThan6Months_no;
@@ -135,6 +137,9 @@ public class IntakeInitiationPage {
 	
 	public WebElement IntakeInitiation_contractNumber_undoButton;
 	
+	@FindBy(css = "#IntakeInitiation_contractNumber_liveSearchResultMainTable a")
+	public WebElement singleContractNumberResult;
+	
 	public WebElement IntakeInitiation_contractName;
 	
 	public WebElement IntakeInitiation_vendorName;
@@ -145,12 +150,27 @@ public class IntakeInitiationPage {
 	
 	public WebElement IntakeInitiation_pssn;
 	
-	// visitor specific 
+	// Grantee specific 
+	
+	public WebElement IntakeInitiation_grantNumber;
+	
+	// var specific 
 	
 	public WebElement IntakeInitiation_visitorComments;
 	
 	public WebElement IntakeInitiation_dateVarReceived;
 	
+	public WebElement IntakeInitiation_birthCountry;
+	
+	public WebElement IntakeInitiation_birthState;
+	
+	public WebElement IntakeInitiation_birthCity;
+	
+	public WebElement IntakeInitiation_visitorsAgency;
+	
+	public WebElement IntakeInitiation_otherAgency;
+
+	public WebElement IntakeInitiation_investigationCompletionDate;
 	
 	/*
 	 * Intake From Applicant Information # End
@@ -220,6 +240,13 @@ public class IntakeInitiationPage {
 	
 	public WebElement IntakeInitiation_coOrGoPhoneNumber;
 	
+	public WebElement IntakeInitiation_requestingPocFirstName;
+
+	public WebElement IntakeInitiation_requestingPocLastName;
+	
+	public WebElement IntakeInitiation_requestingPocEmailAddress;
+
+	public WebElement IntakeInitiation_requestingPocPhoneNumber;
 	
 	/*
 	 * Intake From POC Information # End
@@ -249,6 +276,9 @@ public class IntakeInitiationPage {
 	public WebElement IntakeInitiation_investigationTypeDropdown;
 
 	public WebElement IntakeInitiation_opmDesignationSummary;
+	
+	@FindBy(id = "IntakeInitiation_opmDesignationSummary-path")
+	public WebElement opmDesignationSummaryFilePath;
 	
 	/*
 	 * Intake From position designation # End

@@ -59,7 +59,7 @@ public class FormFunctionsUtils {
 
 		ssnArray = random.longs(9, 0, 10).boxed().toArray(Long[]::new);
 
-		return randomSSN = Arrays.toString(ssnArray);
+		return randomSSN = Arrays.toString(ssnArray).replaceAll("\\W", "").trim();
 
 	}
 	

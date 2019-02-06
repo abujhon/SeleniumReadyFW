@@ -1,7 +1,7 @@
 Feature: XRAY AUTOMATION TEST
 
 	#EPA Supervisor Dashboard Icons
-	@TEST_EPA-375
+	@TEST_EPA-375 @both
 	Scenario: XRAY AUTOMATION TEST
 		Given User navigates to PSS
 		When User logs in as a Supervisor
