@@ -18,7 +18,13 @@ public class BasePage {
 	public BasePage() {
 		PageFactory.initElements(Driver.getInstance(), this);
 	}
-
+	
+	@FindBy(css = ".signOut")
+	public WebElement signOut;
+	
+	@FindBy(xpath = "//a[contains(text(), 'log in')]")
+	public WebElement loginLink;
+	
 	@FindBy(xpath = "//img[contains(@src, 'Intake.png')]")
 	public WebElement startIntake;
 	

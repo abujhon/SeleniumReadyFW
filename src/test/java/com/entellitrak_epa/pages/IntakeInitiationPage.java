@@ -286,5 +286,13 @@ public class IntakeInitiationPage {
 	
 	
 	public WebElement saveButton;
+	
+	
+	// after intake submission
+	
+	public WebElement baseTab;
+	
+	@FindBy(xpath = "//span[contains(text(), 'New Intake form has been submitted.')]")
+	public WebElement newIntakeSubmittedMessage;
 
 }

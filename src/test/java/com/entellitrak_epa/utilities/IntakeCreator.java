@@ -156,7 +156,7 @@ public class IntakeCreator {
 		String fakeEmail = "fakeEmail123@chainbridgesolutionsFakeEmail.com";
 		intakeInitiationPage.IntakeInitiation_hrSpecialistFirstName.sendKeys(formFunctionsUtils.randomFirstName());
 		intakeInitiationPage.IntakeInitiation_hrSpecialistLastName.sendKeys(formFunctionsUtils.randomLastName());
-		intakeInitiationPage.IntakeInitiation_hrSpecialistEmailAddress.sendKeys(fakeEmail);
+		//intakeInitiationPage.IntakeInitiation_hrSpecialistEmailAddress.sendKeys(fakeEmail);
 		intakeInitiationPage.IntakeInitiation_hrSpecialistPhoneNumber
 				.sendKeys(formFunctionsUtils.generatePhoneNumber());
 		intakeInitiationPage.IntakeInitiation_hiringManagerFirstName.sendKeys(formFunctionsUtils.randomFirstName());

@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 				"json:Reports/cucumber.json"},
 		features = "src/test/resources/epa_features", 
 		glue = "com/entellitrak_epa/step_definitions", 
-		tags = "@test",
+		tags = "@epa_test",
 		dryRun = false)
 
 public class CukesRunner {

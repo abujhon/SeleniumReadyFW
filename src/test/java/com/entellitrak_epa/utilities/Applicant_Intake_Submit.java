@@ -54,10 +54,11 @@ public class Applicant_Intake_Submit {
 		applicantNewPassword = applicantResetPassword;
 	    appEmail = applicantEmail;
 		
-		signIn.username.sendKeys("admin_musa");
-		signIn.password.sendKeys("password");
+		signIn.username.sendKeys(PropertiesReader.getProperty("automation_admin"));
+		signIn.password.sendKeys(PropertiesReader.getProperty("password"));
 		signIn.submit.click();
 		
+		sqlPage.configurationTab.click();
 		sqlPage.configurationTab.click();
 		browserUtils.waitForElementToBeClickable(sqlPage.exitEntelliSQL);
 		sqlPage.exitEntelliSQL.click();
@@ -84,7 +85,6 @@ public class Applicant_Intake_Submit {
 		
 		for (WebElement email : sqlPage.allApplicantEmails) {
 			rowNumOfTargetEmailBody++;
-			
 			if (email.getText().trim().equals(applicantEmail)) {
 				applicantTargetBody = Driver.getInstance().findElement(
 						By.xpath("(//table[@class='grid']/tbody/tr[" + rowNumOfTargetEmailBody + "]/td[3])"));
@@ -105,6 +105,7 @@ public class Applicant_Intake_Submit {
 
 
 		applicantUsername = splitEmailBodyForUsername[1].substring(0, splitEmailBodyForUsername[1].indexOf("&")).trim();
+		System.out.println("applicant username :"+applicantUsername);
 
 		splitEmailBodyForPassword = fullEmailBody.split("Password: <strong>");
 
@@ -113,11 +114,13 @@ public class Applicant_Intake_Submit {
 		}
 
 		applicantPassword = splitEmailBodyForPassword[1].substring(0, splitEmailBodyForPassword[1].indexOf("<")).trim();
+		System.out.println("applicant password :"+applicantPassword);
 
 		Driver.getInstance().switchTo().defaultContent();
 		Driver.getInstance().switchTo().frame(sqlPage.toolBarFrame);
+		sqlPage.exitFromSQL.click();
+		browserUtils.waitForElementToBeVisible(sqlPage.newQueryButton);
 
-		sqlPage.exitEntelliSQL.click();
 		
 	}
 	
@@ -134,7 +137,7 @@ public class Applicant_Intake_Submit {
 		browserUtils.waitForElementToBeVisible(signIn.passwordCurrent);
 		
 		signIn.passwordCurrent.sendKeys(applicantPassword);
-		signIn.changePassword.sendKeys(applicantNewPassword);
+		signIn.newPassword.sendKeys(applicantNewPassword);
 		signIn.passwordConfirm.sendKeys(applicantNewPassword);
 		signIn.changePassword.click();
 		
@@ -149,7 +152,7 @@ public class Applicant_Intake_Submit {
 	 *  use this method to complete applicant intake form
 	 */
 	
-	public void complateApplicantIntakeForm(String applicantType) {
+	public void completeApplicantIntakeForm(String applicantType) {
 		
 		applicantIFP.AIF_button.click();
 		browserUtils.waitForElementToBeVisible(applicantIFP.AIF_fairCreditSection);
@@ -170,32 +173,41 @@ public class Applicant_Intake_Submit {
 		applicantIFP.ApplicantIntakeForm_dateOfBirth.sendKeys("11/12/1980");
 		applicantIFP.ApplicantIntakeForm_usCitizen_yes.click();
 		formUtils.dropDown(applicantIFP.ApplicantIntakeForm_placeOfBirthCountryDropdown, "U.S.A");
+		browserUtils.waitForElementToBeVisible(applicantIFP.ApplicantIntakeForm_placeOfBirthState);
+		formUtils.randomDropDownValue(applicantIFP.ApplicantIntakeForm_placeOfBirthState);
 		applicantIFP.ApplicantIntakeForm_placeOfBirthCity.sendKeys(faker.address().city());
 		
-		File ncjFile = new File("/EPA-Entellitrak/epa_test_files/NCJ.pdf");
+		File ncjFile = new File("src/test/resources/epa_test_files/NCJ.pdf");
 		String ncjFilePath = ncjFile.getAbsolutePath();
-		File epaCreditRealease = new File("/EPA-Entellitrak/epa_test_files/epaCredit.pdf");
+		File epaCreditRealease = new File("src/test/resources/epa_test_files/epaCredit.pdf");
 		String epaCreditPath = epaCreditRealease.getAbsolutePath();
-		File of306File = new File("/EPA-Entellitrak/epa_test_files/OF-306.pdf");
+		File of306File = new File("src/test/resources/epa_test_files/OF-306.pdf");
 		String of306Path = of306File.getAbsolutePath();
 		
 		
 		
 		if (applicantType.equals("Federal") || applicantType.equals("Political Appointee") || applicantType.equals("Federal Detailee")) {
 			applicantIFP.ApplicantIntakeForm_njaprUpload.sendKeys(ncjFilePath);
+			browserUtils.sleep(900);
 			applicantIFP.ApplicantIntakeForm_epaCreditReleaseUpload.sendKeys(epaCreditPath);
 		}else {
 			applicantIFP.ApplicantIntakeForm_njaprUpload.sendKeys(ncjFilePath);
+			browserUtils.sleep(900);
 			applicantIFP.ApplicantIntakeForm_epaCreditReleaseUpload.sendKeys(epaCreditPath);
+			browserUtils.sleep(900);
 			applicantIFP.ApplicantIntakeForm_of306Upload.sendKeys(of306Path);
 		}
 		
-		applicantIFP.submitButton.click();
-		browserUtils.waitForElementToBeVisible(applicantIFP.applicantSubmitSuccess);
-		assertTrue(applicantIFP.applicantSubmitSuccess.isDisplayed());
+		
 		
 	}
 	
 	
+	public void submitApplicantIntake() {
+		
+		applicantIFP.submitButton.click();
+		browserUtils.waitForElementToBeVisible(applicantIFP.applicantSubmitSuccess);
+		assertTrue(applicantIFP.applicantSubmitSuccess.isDisplayed());
+	}
 
 }

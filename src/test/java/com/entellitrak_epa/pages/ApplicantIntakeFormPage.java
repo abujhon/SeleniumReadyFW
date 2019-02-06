@@ -80,6 +80,8 @@ public class ApplicantIntakeFormPage {
 	@FindBy(id = "ApplicantIntakeForm_placeOfBirthCountry")
 	public WebElement ApplicantIntakeForm_placeOfBirthCountryDropdown;
 	
+	public WebElement ApplicantIntakeForm_placeOfBirthState;
+	
 	public WebElement ApplicantIntakeForm_placeOfBirthCity;
 	
 	@FindBy(xpath = "//span[contains(text(), 'Download/Upload Signature')]")

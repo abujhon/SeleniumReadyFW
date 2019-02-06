@@ -18,6 +18,7 @@ public class SignOnPage {
 	public SignOnPage() {
 		PageFactory.initElements(Driver.getInstance(), this);
 	}
+	
 
 	public WebElement username;
 
@@ -30,10 +31,17 @@ public class SignOnPage {
 	 */
 
 	public WebElement passwordCurrent;
+	
+	@FindBy(id = "password")
+	public WebElement newPassword;
 
 	public WebElement passwordConfirm;
 
 	@FindBy(css = ".button")
 	public WebElement changePassword;
+	
+	
+	
+	
 
 }

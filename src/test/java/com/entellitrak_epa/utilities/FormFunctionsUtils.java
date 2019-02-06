@@ -3,6 +3,8 @@
  */
 package com.entellitrak_epa.utilities;
 
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -14,6 +16,8 @@ import java.util.Random;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.entellitrak_epa.pages.BasePage;
+import com.entellitrak_epa.pages.SignOnPage;
 import com.github.javafaker.Faker;
 
 /**
@@ -30,6 +34,17 @@ public class FormFunctionsUtils {
 
 	Faker faker = new Faker();
 	Random random = new Random();
+	BasePage basePg = new BasePage();
+	BrowserUtils browserUtils = new BrowserUtils();
+	SignOnPage signOnPg = new SignOnPage();
+	
+	public void signOut() {
+		basePg.signOut.click();
+	    browserUtils.waitForElementToBeVisible(basePg.loginLink);
+	    basePg.loginLink.click();
+	    browserUtils.waitForElementToBeVisible(signOnPg.username);
+	    assertTrue(signOnPg.username.isDisplayed());
+	}
 	
 	public String randomFirstName() {
 		String randomFN = faker.name().firstName();
