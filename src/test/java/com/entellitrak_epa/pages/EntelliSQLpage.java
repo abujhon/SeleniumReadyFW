@@ -89,4 +89,7 @@ public class EntelliSQLpage {
 	@FindBy(xpath = "(//table[@class='grid']/tbody/tr/td[8])")
 	public List<WebElement> allApplicantEmails;
 	
+	@FindBy(xpath = "//img[contains(@alt, 'Exit')]")
+	public WebElement exitFromSQL;
+	
 }

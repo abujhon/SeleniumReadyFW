@@ -4,12 +4,15 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import com.entellitrak_epa.utilities.Driver;
+import com.entellitrak_epa.utilities.FormFunctionsUtils;
 import com.entellitrak_epa.utilities.PropertiesReader;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 public class Hook {
+	
+	FormFunctionsUtils formUtils = new FormFunctionsUtils();
 
 	@Before
 	public void setUp() {
@@ -28,7 +31,11 @@ public class Hook {
 			final byte[] screenshot = ((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png");
 			scenario.write(scenario.getName());
+			
+			formUtils.signOut();
 		}
+		
+		
 		Driver.closeDriver();
 	}
 }
