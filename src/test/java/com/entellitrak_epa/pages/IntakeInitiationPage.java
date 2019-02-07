@@ -78,6 +78,8 @@ public class IntakeInitiationPage {
 	
 	public WebElement IntakeInitiation_socialSecurityNumber;
 	
+	public WebElement IntakeInitiation_socialSecurityNumberRequiredIcon;
+	
 	public WebElement IntakeInitiation_applicantEmail;
 	
 	public WebElement IntakeInitiation_personalPhoneNumber;
@@ -169,6 +171,8 @@ public class IntakeInitiationPage {
 	public WebElement IntakeInitiation_visitorsAgency;
 	
 	public WebElement IntakeInitiation_otherAgency;
+	
+	public WebElement IntakeInitiation_otherAgencyRequiredIcon;
 
 	public WebElement IntakeInitiation_investigationCompletionDate;
 	
