@@ -1,3 +1,4 @@
+@Regression
 Feature: Intake Initiation: Visitor Modifications
 
 	#As a user, I want the ability to create an intake initiation where applicant type = Visitor and have these additional fields display so that I can enter all VAR information during intake.
