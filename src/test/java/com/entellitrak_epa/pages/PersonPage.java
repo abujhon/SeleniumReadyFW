@@ -109,6 +109,9 @@ public class PersonPage {
 	@FindBy(id = "caseSummary")
 	public WebElement caseSummaryFieldSet;
 	
+	@FindBy(css = "#caseSummary a")
+	public WebElement caseSummaryCaseLink;
+	
 	@FindBy(css = "#caseSummary tbody tr:nth-child(1) td:last-child")
 	public WebElement workflowStatus;
 

@@ -40,8 +40,4 @@ public class SignOnPage {
 	@FindBy(css = ".button")
 	public WebElement changePassword;
 	
-	
-	
-	
-
 }

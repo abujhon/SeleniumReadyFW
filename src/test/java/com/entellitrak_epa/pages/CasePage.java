@@ -21,6 +21,11 @@ public class CasePage {
 	 * All elements on Case
 	 */
 	
+	public WebElement trackingForm;
+	
+	@FindBy(css = "#tabMenu li:nth-child(4) a")
+	public WebElement caseAdjudicationChildLink;
+	
 	/*
 	 * Assignment Information
 	 */
@@ -276,6 +281,13 @@ public class CasePage {
 	
 	@FindBy(css = "#documentSummary div.formButton")
 	public List<WebElement> caseDocumentsPreviewButton;
+	
+	/*
+	 * Case Subway Model
+	 */
+	
+	@FindBy(css = "#displayPanel div:nth-child(5)")
+	public WebElement caseSubwayWorkflowStatus;
 	
 	/*
 	 * Case miscellaneous
