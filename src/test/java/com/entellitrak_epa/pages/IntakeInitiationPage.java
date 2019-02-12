@@ -288,6 +288,8 @@ public class IntakeInitiationPage {
 	 * Intake From position designation # End
 	 */
 	
+	@FindBy(css = "#loading img")
+	public WebElement loading;
 	
 	public WebElement saveButton;
 	
@@ -298,5 +300,8 @@ public class IntakeInitiationPage {
 	
 	@FindBy(xpath = "//span[contains(text(), 'New Intake form has been submitted.')]")
 	public WebElement newIntakeSubmittedMessage;
+	
+	@FindBy(linkText = "Case")
+	public WebElement intakeCaseLink;
 
 }
