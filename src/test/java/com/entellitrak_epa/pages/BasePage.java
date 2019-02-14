@@ -104,4 +104,11 @@ public class BasePage {
 	@FindBy(css = "#inbox_content_table td:nth-child(7)")
 	public List<WebElement> enhancedInboxLastSaveDate;
 	
+	/*
+	 * Breadcrumbs
+	 */
+	
+	@FindBy(xpath = "//a[contains(text(),'Case (')]")
+	public WebElement breadcrumb_caseLink;
+
 }

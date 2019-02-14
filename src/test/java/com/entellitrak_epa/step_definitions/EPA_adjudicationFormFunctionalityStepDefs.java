@@ -113,161 +113,248 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		}
 		casePage.saveAndContinueButton.click();
 		browserUtils.waitForElementToBeClickable(casePage.saveAndContinueButton);
-//		if(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Adjudication Queue")) {
-//			formFunctionsUtils.dropDown(casePage.Case_assignedAdjudicator, "Adjudicator I, Automation");
-//			formFunctionsUtils.dropDown(casePage.actionToTake, "Assign Adjudicator");
-//		}
-//		casePage.saveAndContinueButton.click();
-//		browserUtils.waitForElementToBeClickable(casePage.saveAndContinueButton);
-//		if(!(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Adjudication"))) {
-//			System.out.println("not at the Adjudication state - test failed");
-//			fail();
-//		}
-//		System.out.println("Made it to Adjudication");
+		if(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Adjudication Queue")) {
+			formFunctionsUtils.dropDown(casePage.Case_assignedAdjudicator, "Adjudicator I, Automation");
+			formFunctionsUtils.dropDown(casePage.actionToTake, "Assign Adjudicator");
+		}
+		casePage.saveAndContinueButton.click();
+		browserUtils.waitForElementToBeClickable(casePage.saveAndContinueButton);
+		if(!(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Adjudication"))) {
+			System.out.println("not at the Adjudication state - test failed");
+			fail();
+		}
+		System.out.println("Made it to Adjudication");
 	}
 
 	@When("^user logs out from PSS$")
 	public void user_logs_out_from_PSS() throws Throwable {
-//		basePage.signOut.click();
+		basePage.signOut.click();
 	}
 
 	@Given("^user logs in as an Adjudicator$")
 	public void user_logs_in_as_an_Adjudicator() throws Throwable {
-//		browserUtils.waitForElementToBeVisible(signOnPage.username);
-//		signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_adj"));
-//		signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
-//		signOnPage.submit.click();
+		browserUtils.waitForElementToBeVisible(signOnPage.username);
+		signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_adj"));
+		signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+		signOnPage.submit.click();
 	}
 
 	@When("^user navigates to the Assigned Cases queue$")
 	public void user_navigates_to_the_Assigned_Cases_queue() throws Throwable {
-//		basePage.myCases.click();
+		basePage.myCases.click();
 	}
 
 	@When("^user selects case assigned in the Adjudication state$")
 	public void user_selects_case_assigned_in_the_Adjudication_state() throws Throwable {
-//		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
-//		basePage.enhancedInboxSearch.sendKeys(intakeCreator.getLastName());
-//		browserUtils.sleep(1000);
-//		String personNameInbox = intakeCreator.getLastName()+", "+intakeCreator.getFirstName();
-//		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
-//			if(personNames.getText().trim().equals(personNameInbox.trim())) {
-//				basePage.enhancedInboxPersonNames.get(0).click();
-//			}
-//		}
+		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
+		basePage.enhancedInboxSearch.sendKeys(intakeCreator.getLastName());
+		browserUtils.sleep(1000);
+		String personNameInbox = intakeCreator.getLastName()+", "+intakeCreator.getFirstName();
+		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
+			if(personNames.getText().trim().equals(personNameInbox.trim())) {
+				basePage.enhancedInboxPersonNames.get(0).click();
+			}
+		}
+		Driver.getInstance().switchTo().defaultContent();
 	}
 
 	@Then("^the case record of selected applicant displays$")
 	public void the_case_record_of_selected_applicant_displays() throws Throwable {
-//		assertTrue(casePage.trackingForm.isDisplayed());
+		assertTrue(casePage.trackingForm.isDisplayed());
 	}
 
 	@When("^user navigates to the Adjudication CTO$")
 	public void user_navigates_to_the_Adjudication_CTO() throws Throwable {
-//		casePage.caseAdjudicationChildLink.click();
+		casePage.caseAdjudicationChildLink.click();
 	}
 
 	@When("^user clicks on the already created Adjudication record$")
 	public void user_clicks_on_the_already_created_Adjudication_record() throws Throwable {
-//		browserUtils.waitForElementToBeVisible(adjudicationPage.adjListingTable);
-//		adjudicationPage.adjListingTable_rowLink.click();
+		browserUtils.waitForElementToBeVisible(adjudicationPage.adjListingTable);
+		adjudicationPage.adjListingTable_rowLink.click();
 	}
 
 	@Then("^the Adjudication record displays \\(display mapping Adjudication state\\)$")
 	public void the_Adjudication_record_displays_display_mapping_Adjudication_state() throws Throwable {
-//		for (WebElement formFields: adjudicationPage.adjFields_adjState()) {
-//			assertTrue(formFields.isDisplayed());
-//		}
+		for (WebElement formFields: adjudicationPage.adjFields_adjState()) {
+			assertTrue(formFields.isDisplayed());
+		}
 	}
 
 	@When("^user clicks Save on Adjudication$")
 	public void user_clicks_Save_on_Adjudication() throws Throwable {
-//		adjudicationPage.saveButton.click();
+		adjudicationPage.saveButton.click();
 	}
 
 	@Then("^form does not save due to empty required fields on Adjudication$")
 	public void form_does_not_save_due_to_empty_required_fields_on_Adjudication() throws Throwable {
-
+		for (WebElement msgs: adjudicationPage.fieldsRequiredMessages) {
+			assertTrue(msgs.isDisplayed());
+		}
+		assertTrue(adjudicationPage.fieldsRequiredMessages.get(0).getText().equals("Adjudication Recommendation is required."));
+		assertTrue(adjudicationPage.fieldsRequiredMessages.get(1).getText().equals("Adjudication Recommendation Date is required."));
+		assertTrue(adjudicationPage.fieldsRequiredMessages.get(2).getText().equals("Adjudication Summary is required."));
 	}
 
 	@When("^user populates Seriousness Issue Code$")
 	public void user_populates_Seriousness_Issue_Code() throws Throwable {
-
+		formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_seriousnessIssueCode);
 	}
 
-	@When("^user selects Adjudicative Guidelines$")
-	public void user_selects_Adjudicative_Guidelines() throws Throwable {
-
+	@When("^user selects all Adjudicative Guidelines$")
+	public void user_selects_all_Adjudicative_Guidelines() throws Throwable {
+		adjudicationPage.adjGuidelines_add.click();
+		for (WebElement guidelines: adjudicationPage.adjGuidelines()) {
+			guidelines.click();
+		}
+		adjudicationPage.adjGuidelines_done.click();
+		for (WebElement adjGuidelines: adjudicationPage.adjGuidelinesSelectedDisplay) {
+			assertTrue(adjGuidelines.isDisplayed());
+		}
 	}
 
-	@When("^user selects Suitability Guidelines$")
-	public void user_selects_Suitability_Guidelines() throws Throwable {
-
+	@When("^user selects all Suitability Guidelines$")
+	public void user_selects_all_Suitability_Guidelines() throws Throwable {
+		adjudicationPage.suitabilityGuidelines_add.click();
+		for (WebElement selectedGuidelines: adjudicationPage.suitabilityGuidelines()) {
+			selectedGuidelines.click();
+		}
+		adjudicationPage.suitabilityGuidelines_done.click();
+		for (WebElement selectedGuidelines: adjudicationPage.suitabilityGuidelinesSelectedDisplay) {
+			assertTrue(selectedGuidelines.isDisplayed());
+		}
 	}
 
 	@When("^user populates Adjudication Recommendation$")
 	public void user_populates_Adjudication_Recommendation() throws Throwable {
-
+		formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_adjudicationRecommendation);
 	}
 
 	@When("^user populates Adjudication Recommendation Date$")
 	public void user_populates_Adjudication_Recommendation_Date() throws Throwable {
-
+		adjudicationPage.Adjudication_adjudicationRecommendationDate.sendKeys(formFunctionsUtils.currentDate());
 	}
 
 	@When("^user populates Adjudication Summary$")
 	public void user_populates_Adjudication_Summary() throws Throwable {
-
+		adjudicationPage.Adjudication_adjudicationSummary.sendKeys("Testing Adjudication Summary ~!@#$%^&*(){}|[]\"'<>?',./]``");
 	}
 
 	@When("^user sets Ready for Final Adjudication to No$")
 	public void user_sets_Ready_for_Final_Adjudication_to_No() throws Throwable {
-
+		adjudicationPage.Adjudication_readyForFinalAdjudication_no.click();
 	}
 
 	@Then("^the Adjudication Recommendation fields remain editable$")
 	public void the_Adjudication_Recommendation_fields_remain_editable() throws Throwable {
-
+		if (Driver.getInstance().getCurrentUrl().contains("listChild")) {
+			browserUtils.waitForElementToBeVisible(adjudicationPage.adjListingTable);
+			adjudicationPage.adjListingTable_rowLink.click();
+		}
+		
+		// FIND A WAY TO VERIFY FIELDS ARE STILL EDITABLE
+		
+		// pick new values, if new value is the same as old value, pick new value again, check that new value is different
+		String selectedSeriousnessIssueCode = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_seriousnessIssueCode).getFirstSelectedOption().getText().trim();
+		formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_seriousnessIssueCode);
+		String updatedSeriousnessIssueCode = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_seriousnessIssueCode).getFirstSelectedOption().getText().trim();
+		while (selectedSeriousnessIssueCode.equals(updatedSeriousnessIssueCode)) {
+			formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_seriousnessIssueCode);
+			updatedSeriousnessIssueCode = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_seriousnessIssueCode).getFirstSelectedOption().getText().trim();
+		}
+		assertTrue(!(selectedSeriousnessIssueCode.equals(updatedSeriousnessIssueCode)));
+		
+		// assert edit is available and displayed
+		assertTrue(adjudicationPage.adjGuidelines_edit.isDisplayed());
+		assertTrue(adjudicationPage.suitabilityGuidelines_edit.isDisplayed());
+		adjudicationPage.adjGuidelines_edit.click();
+		
+		// adj recommendation mutability check && asserting that selected and updated values do not equal one another
+		String selectedAdjRecommendation = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_adjudicationRecommendation).getFirstSelectedOption().getText().trim();
+		formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_adjudicationRecommendation);
+		String updatedAdjRecommendation = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_adjudicationRecommendation).getFirstSelectedOption().getText().trim();
+		while (selectedAdjRecommendation.equals(updatedAdjRecommendation)) {
+			formFunctionsUtils.randomDropDownValue(adjudicationPage.Adjudication_adjudicationRecommendation);
+			updatedAdjRecommendation = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_adjudicationRecommendation).getFirstSelectedOption().getText().trim();
+		}
+		assertTrue(!(selectedAdjRecommendation.equals(updatedAdjRecommendation)));
+		
+		// adj recommendation date && asserting that selected and updated values do not equal one another
+		String selectedAdjDate = adjudicationPage.Adjudication_adjudicationRecommendationDate.getAttribute("value").trim();
+		String updatedAdjDate;
+		adjudicationPage.Adjudication_adjudicationRecommendationDate.clear();
+		adjudicationPage.Adjudication_adjudicationRecommendationDate.sendKeys(formFunctionsUtils.pastDate(10));
+		JavascriptExecutor js = ((JavascriptExecutor) Driver.getInstance());
+		updatedAdjDate = js.executeScript("return arguments[0].value;",adjudicationPage.Adjudication_adjudicationRecommendationDate).toString();
+		assertTrue(!(selectedAdjDate.equals(updatedAdjDate)));
+		
+		// adj summary mutability check
+		String existingAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getText().trim();
+		System.out.println("existing summary = "+existingAdjSummary);
+		String updatedTextAdjSummary;
+		adjudicationPage.Adjudication_adjudicationSummary.clear();
+		adjudicationPage.Adjudication_adjudicationSummary.sendKeys("Testing editability of text field");
+		updatedTextAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getAttribute("value");
+		System.out.println("updated summary = "+updatedTextAdjSummary);
+		
 	}
 
 	@When("^user sets Ready for Final Adjudication to Yes$")
 	public void user_sets_Ready_for_Final_Adjudication_to_Yes() throws Throwable {
-
+		adjudicationPage.Adjudication_readyForFinalAdjudication_yes.click();
 	}
 
 	@Then("^Select Final Adjudicator displays$")
 	public void select_Final_Adjudicator_displays() throws Throwable {
-
+		assertTrue(adjudicationPage.Adjudication_finalAdjudicator.isDisplayed());
 	}
 
 	@Then("^form does not save due to empty required field$")
 	public void form_does_not_save_due_to_empty_required_field() throws Throwable {
-
+		for (WebElement msgs: adjudicationPage.fieldsRequiredMessages) {
+			assertTrue(msgs.isDisplayed());
+		}
+		assertTrue(adjudicationPage.fieldsRequiredMessages.get(0).getText().equals("Select Final Adjudicator is required."));
 	}
 
 	@When("^user sets Select Final Adjudicator to <\"([^\"]*)\">$")
-	public void user_sets_Select_Final_Adjudicator_to(String arg1) throws Throwable {
-
+	public void user_sets_Select_Final_Adjudicator_to(String finalAdjudicator) throws Throwable {
+		formFunctionsUtils.dropDown(adjudicationPage.Adjudication_finalAdjudicator, finalAdjudicator);
 	}
 
 	@Then("^message displays on listing indicating that case has been sent to final adjudication$")
 	public void message_displays_on_listing_indicating_that_case_has_been_sent_to_final_adjudication()
 			throws Throwable {
-
+		System.out.println("Running code");
+		if (Driver.getInstance().getCurrentUrl().contains("listChild")) {
+			for (WebElement msgs: adjudicationPage.adjListingSuccessfulMessages) {
+				assertTrue(msgs.isDisplayed());
+			}
+			assertTrue(adjudicationPage.adjListingSuccessfulMessages.get(0).getText().equals("The Case has been sent for Final Adjudication."));
+		}
+		System.out.println("Ran code");
 	}
 
 	@Then("^the Adjudication Recommendation fields become read only$")
 	public void the_Adjudication_Recommendation_fields_become_read_only() throws Throwable {
-
+		if (Driver.getInstance().getCurrentUrl().contains("listChild")) {
+			browserUtils.waitForElementToBeVisible(adjudicationPage.adjListingTable);
+			adjudicationPage.adjListingTable_rowLink.click();
+		}
+		// FIND WAY TO VERIFY FIELDS ARE READ ONLY
+		
 	}
 
 	@When("^user navigates to Case$")
 	public void user_navigates_to_Case() throws Throwable {
-
+		basePage.breadcrumb_caseLink.click();
 	}
 
 	@Then("^the workflow status of Case is now Final Adjudication$")
 	public void the_workflow_status_of_Case_is_now_Final_Adjudication() throws Throwable {
-
+		String actualCaseWorkflowStatus = casePage.caseSubwayWorkflowStatus.getText()
+				.substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim();
+		String expectedCaseWorkflowStatus = "Final Adjudication";
+		assertEquals(expectedCaseWorkflowStatus,actualCaseWorkflowStatus); 
 	}
 }
