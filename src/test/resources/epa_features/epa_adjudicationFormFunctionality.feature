@@ -20,27 +20,27 @@ Scenario: Automation: Adjudication Form - Display and Assignment Functionality
 	And user clicks on the already created Adjudication record 
 	Then the Adjudication record displays (display mapping Adjudication state) 
 	
-	When user clicks Save on Adjudication
+	When user clicks Save on Adjudication 
 	Then form does not save due to empty required fields on Adjudication 
 	
 	When user populates Seriousness Issue Code 
-	And user selects Adjudicative Guidelines 
-	And user selects Suitability Guidelines 
+	And user selects all Adjudicative Guidelines 
+	And user selects all Suitability Guidelines 
 	And user populates Adjudication Recommendation 
 	And user populates Adjudication Recommendation Date 
 	And user populates Adjudication Summary 
 	And user sets Ready for Final Adjudication to No 
-	And user clicks Save 
+	And user clicks Save on Adjudication 
 	Then the Adjudication Recommendation fields remain editable 
 	
 	When user sets Ready for Final Adjudication to Yes 
 	Then Select Final Adjudicator displays 
 	
-	When user clicks Save 
+	When user clicks Save on Adjudication 
 	Then form does not save due to empty required field 
 	
 	When user sets Select Final Adjudicator to <"Adjudicator II, Automation"> 
-	And user clicks Save 
+	And user clicks Save on Adjudication 
 	Then message displays on listing indicating that case has been sent to final adjudication 
 	And the Adjudication Recommendation fields become read only 
 	

@@ -34,8 +34,20 @@ public class AdjudicationPage {
 	@FindBy(xpath = "(//a[.='Add'])[1]")
 	public WebElement adjGuidelines_add;
 	
-	@FindBy(xpath = "(//a[.='Add'])[2]")
+	@FindBy(xpath = "(//a[.='Done'])[1]")
+	public WebElement adjGuidelines_done;
+	
+	@FindBy(xpath = "(//a[.='Add'])[1]")
 	public WebElement suitabilityGuidelines_add;
+	
+	@FindBy(xpath = "(//a[.='Done'])[2]")
+	public WebElement suitabilityGuidelines_done;
+	
+	@FindBy(xpath = "(//a[.='Edit'])[1]")
+	public WebElement adjGuidelines_edit;
+	
+	@FindBy(xpath = "(//a[.='Edit'])[2]")
+	public WebElement suitabilityGuidelines_edit;
 	
 	public WebElement Adjudication_adjudicationRecommendation;
 	
@@ -47,7 +59,102 @@ public class AdjudicationPage {
 	
 	public WebElement Adjudication_readyForFinalAdjudication_no;
 	
+	public WebElement Adjudication_finalAdjudicator;
+	/*
+	 * Adjudicative Guidelines
+	 */
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_1")
+	public WebElement adjGuidelines_alcoholConsumption;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_2")
+	public WebElement adjGuidelines_allegianceToUSA;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_3")
+	public WebElement adjGuidelines_criminalConduct;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_4")
+	public WebElement adjGuidelines_drugInvolvement;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_5")
+	public WebElement adjGuidelines_financialConsiderations;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_6")
+	public WebElement adjGuidelines_foreignInfluence;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_7")
+	public WebElement adjGuidelines_foreignPreference;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_8")
+	public WebElement adjGuidelines_handlingProtectedInfo;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_9")
+	public WebElement adjGuidelines_outsideActivities;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_10")
+	public WebElement adjGuidelines_personalConduct;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_11")
+	public WebElement adjGuidelines_psychologicalConditions;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_12")
+	public WebElement adjGuidelines_sexualBehavior;
+	
+	@FindBy(id = "Adjudication_adjudicativeGuideliness_13")
+	public WebElement adjGuidelines_userOfInfoTechSystems;
+	
+	/*
+	 * Adjudicative Guidelines display
+	 */
+	
+	@FindBy(css = "#Adjudication_adjudicativeGuideliness_display li")
+	public List<WebElement> adjGuidelinesSelectedDisplay;
+	
+	/*
+	 * Suitability Guidelines
+	 */
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_1")
+	public WebElement suitabilityGuidelines_alcoholAbuse;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_2")
+	public WebElement suitabilityGuidelines_allegianceToUSA;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_3")
+	public WebElement suitabilityGuidelines_criminal;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_4")
+	public WebElement suitabilityGuidelines_drugUse;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_5")
+	public WebElement suitabilityGuidelines_employment;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_6")
+	public WebElement suitabilityGuidelines_falseStatement;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_7")
+	public WebElement suitabilityGuidelines_financialConsideration;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_8")
+	public WebElement suitabilityGuidelines_personalConduct;
+	
+	@FindBy(id = "Adjudication_suitabilityGuideliness_9")
+	public WebElement suitabilityGuidelines_refusalToProvideTestimony;
+	
+	/*
+	 * Adjudicative Guidelines display
+	 */
+	
+	@FindBy(css = "#Adjudication_suitabilityGuideliness_display li")
+	public List<WebElement> suitabilityGuidelinesSelectedDisplay;
+	
 	public WebElement saveButton;
+	
+	@FindBy(css = "#messagesList label")
+	public List<WebElement> fieldsRequiredMessages;
+	
+	@FindBy(css = "#messagesList span")
+	public List<WebElement> adjListingSuccessfulMessages;	
 	
 	public List<WebElement> adjFields_adjState() {
 		List<WebElement> adjFields_adjState = new ArrayList<>();
@@ -61,4 +168,41 @@ public class AdjudicationPage {
 		adjFields_adjState.add(Adjudication_readyForFinalAdjudication_no);
 		return adjFields_adjState;
 	}
+	
+	@FindBy(xpath = "//fieldset[@id='adjudication-recommendation-group']//input[@type='hidden']")
+	public List<WebElement> adjRecommendationReadOnlyFields;
+	
+	public List<WebElement> adjGuidelines() {
+		List<WebElement> adjGuidelines = new ArrayList<>();
+		adjGuidelines.add(adjGuidelines_alcoholConsumption);
+		adjGuidelines.add(adjGuidelines_allegianceToUSA);
+		adjGuidelines.add(adjGuidelines_criminalConduct);
+		adjGuidelines.add(adjGuidelines_drugInvolvement);
+		adjGuidelines.add(adjGuidelines_financialConsiderations);
+		adjGuidelines.add(adjGuidelines_foreignInfluence);
+		adjGuidelines.add(adjGuidelines_foreignPreference);
+		adjGuidelines.add(adjGuidelines_handlingProtectedInfo);
+		adjGuidelines.add(adjGuidelines_outsideActivities);
+		adjGuidelines.add(adjGuidelines_personalConduct);
+		adjGuidelines.add(adjGuidelines_psychologicalConditions);
+		adjGuidelines.add(adjGuidelines_sexualBehavior);
+		adjGuidelines.add(adjGuidelines_userOfInfoTechSystems);
+		return adjGuidelines;
+	}
+	
+	public List<WebElement> suitabilityGuidelines() {
+		List<WebElement> suitabilityGuidelines = new ArrayList<>();
+		suitabilityGuidelines.add(suitabilityGuidelines_alcoholAbuse);
+		suitabilityGuidelines.add(suitabilityGuidelines_allegianceToUSA);
+		suitabilityGuidelines.add(suitabilityGuidelines_criminal);
+		suitabilityGuidelines.add(suitabilityGuidelines_drugUse);
+		suitabilityGuidelines.add(suitabilityGuidelines_employment);
+		suitabilityGuidelines.add(suitabilityGuidelines_falseStatement);
+		suitabilityGuidelines.add(suitabilityGuidelines_financialConsideration);
+		suitabilityGuidelines.add(suitabilityGuidelines_personalConduct);
+		suitabilityGuidelines.add(suitabilityGuidelines_refusalToProvideTestimony);
+		return suitabilityGuidelines;
+	}
+	
+	
 }

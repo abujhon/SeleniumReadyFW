@@ -139,6 +139,7 @@ public class IntakeCreator {
 				System.out.println("it displays");
 				browserUtils.sleep(1000);
 			}
+			browserUtils.sleep(1000);
 			formFunctionsUtils.randomDropDownValue(intakeInitiationPage.IntakeInitiationSanDropdown);
 			formFunctionsUtils.randomDropDownValue(intakeInitiationPage.IntakeInitiationDutyLocationDropdown);
 			browserUtils.sleep(1000);

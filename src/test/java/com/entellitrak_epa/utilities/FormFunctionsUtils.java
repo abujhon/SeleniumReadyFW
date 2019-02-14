@@ -203,6 +203,10 @@ public class FormFunctionsUtils {
 			}
 		}
 		
+		public Select dropDownElement(WebElement dropDownElement) {
+			Select dropDown = new Select(dropDownElement);
+			return dropDown;
+		}
 		
 		/**
 		 * @param element
