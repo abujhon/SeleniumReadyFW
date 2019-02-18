@@ -99,6 +99,7 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 
 	@When("^user clicks on My Cases$")
 	public void user_clicks_on_My_Cases()  {
+	    browserUtils.sleep(1000);
 	    basePage.myCases.click();
 	}
 
