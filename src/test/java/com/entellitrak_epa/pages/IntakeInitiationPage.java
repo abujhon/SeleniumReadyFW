@@ -3,6 +3,8 @@
  */
 package com.entellitrak_epa.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -301,7 +303,16 @@ public class IntakeInitiationPage {
 	@FindBy(xpath = "//span[contains(text(), 'New Intake form has been submitted.')]")
 	public WebElement newIntakeSubmittedMessage;
 	
+	@FindBy(css = "#messagesList span")
+	public List<WebElement> successfulMessages;
+	
 	@FindBy(linkText = "Case")
 	public WebElement intakeCaseLink;
+	
+	@FindBy(linkText = "Person")
+	public WebElement intakePersonLink;
+	
+	
+	
 
 }
