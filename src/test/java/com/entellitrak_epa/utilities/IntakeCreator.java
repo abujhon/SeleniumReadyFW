@@ -92,6 +92,127 @@ public class IntakeCreator {
 			break;
 		}
 	}
+	
+	public void submitIntake_SkipApplicantIntakeFor(String applicantType, String applicantEmail, boolean skip) {
+		switch (applicantType) {
+		case "Federal":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completeHrSpecialistInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Political Appointee":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completeHrSpecialistInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Federal Detailee":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completeHrSpecialistInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Non-Federal Detailee":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Contractor":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "SEE":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Grantee":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Foreign National":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Volunteer":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "Student":
+			browserUtils.sleep(1000);
+			if (skip) {
+				intakeInitiationPage.IntakeInitiation_skipApplicantIntake_yes.click();
+				intakeInitiationPage.IntakeInitiation_reason.sendKeys("Test reason for skipping.~!@#$%^&*()_+][{};'<>?");
+			}
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			completePositionDesignationSection();
+			break;
+		case "VAR":
+			browserUtils.sleep(1000);
+			formFunctionsUtils.dropDown(intakeInitiationPage.IntakeInitiationCasetypeDropdown, "New");
+			completeApplicantInfoSection(applicantType, applicantEmail);
+			completePOCInfoSection();
+			break;
+		}
+	}
 
 	private void completeApplicantInfoSection(String applicantType, String applicantEmail) {
 		formFunctionsUtils.dropDown(intakeInitiationPage.IntakeIni_ApplicantType_Dropdown, applicantType);
@@ -123,14 +244,21 @@ public class IntakeCreator {
 			intakeInitiationPage.IntakeInitiation_pssn.sendKeys("p" + appPSSN);
 		}
 		intakeInitiationPage.IntakeInitiation_applicantEmail.sendKeys(applicantEmail);
-		if (applicantType.equals("Grantee")) {
-			intakeInitiationPage.IntakeInitiation_grantNumber.sendKeys(formFunctionsUtils.generateRandomNumber(10));
-		}
-		if (applicantType.equals("Contractor")) {
+//		if (applicantType.equals("Grantee")) {
+//			intakeInitiationPage.IntakeInitiation_grantNumber.sendKeys(formFunctionsUtils.generateRandomNumber(10));
+//		}
+		if (applicantType.equals("Contractor")
+				|| applicantType.equals("Non-Federal Detailee")
+				|| applicantType.equals("SEE")
+				|| applicantType.equals("Grantee")
+				|| applicantType.equals("Foreign National")
+				|| applicantType.equals("Volunteer")
+				|| applicantType.equals("Student")) {
 			intakeInitiationPage.IntakeInitiation_contractNumber_searchButton.click();
 			intakeInitiationPage.IntakeInitiation_contractNumber_liveSearchInput.sendKeys("123456789AAA");
 			intakeInitiationPage.singleContractNumberResult.click();
 			intakeInitiationPage.IntakeInitiation_applicantTenureLessThan6Months_no.click();
+			intakeInitiationPage.IntakeInitiation_endDate.sendKeys(formFunctionsUtils.futureDate(100));
 		}
 		if (!"VAR".equals(applicantType)) {
 			formFunctionsUtils

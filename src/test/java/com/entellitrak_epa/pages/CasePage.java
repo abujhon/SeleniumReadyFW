@@ -23,7 +23,7 @@ public class CasePage {
 	
 	public WebElement trackingForm;
 	
-	@FindBy(css = "#tabMenu li:nth-child(5) a")
+	@FindBy(css = "#sideList li:nth-child(5) a")
 	public WebElement caseAdjudicationChildLink;
 	
 	/*

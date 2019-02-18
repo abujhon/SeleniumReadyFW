@@ -57,7 +57,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		browserUtils.waitForElementToBeVisible(basePage.startIntake);
 		basePage.startIntake.click();
 		browserUtils.waitForElementToBeVisible(intakeInitiationPage.investigationInformatinFieldSet);
-		intakeCreator.submitIntakeFor("Federal", "eservellon@chainbridgesolutions.com");
+		intakeCreator.submitIntakeFor("Student", "eservellon@chainbridgesolutions.com");
 		intakeInitiationPage.saveButton.click();
 	}
 
@@ -146,14 +146,17 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@When("^user selects case assigned in the Adjudication state$")
 	public void user_selects_case_assigned_in_the_Adjudication_state() throws Throwable {
-		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
-		basePage.enhancedInboxSearch.sendKeys(intakeCreator.getLastName());
-		browserUtils.sleep(1000);
 		String personNameInbox = intakeCreator.getLastName()+", "+intakeCreator.getFirstName();
+		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
+		basePage.enhancedInboxSearch.sendKeys(personNameInbox);
+		browserUtils.sleep(1000);
+		int x = 0;
 		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
+			System.out.println(personNameInbox+" ----- "+personNames.getText());
 			if(personNames.getText().trim().equals(personNameInbox.trim())) {
-				basePage.enhancedInboxPersonNames.get(0).click();
+				basePage.enhancedInboxPersonNames.get(x).click();
 			}
+			x++;
 		}
 		Driver.getInstance().switchTo().defaultContent();
 	}
@@ -267,7 +270,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		// assert edit is available and displayed
 		assertTrue(adjudicationPage.adjGuidelines_edit.isDisplayed());
 		assertTrue(adjudicationPage.suitabilityGuidelines_edit.isDisplayed());
-		adjudicationPage.adjGuidelines_edit.click();
 		
 		// adj recommendation mutability check && asserting that selected and updated values do not equal one another
 		String selectedAdjRecommendation = formFunctionsUtils.dropDownElement(adjudicationPage.Adjudication_adjudicationRecommendation).getFirstSelectedOption().getText().trim();
@@ -323,16 +325,14 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 	}
 
 	@Then("^message displays on listing indicating that case has been sent to final adjudication$")
-	public void message_displays_on_listing_indicating_that_case_has_been_sent_to_final_adjudication()
-			throws Throwable {
-		System.out.println("Running code");
+	public void message_displays_on_listing_indicating_that_case_has_been_sent_to_final_adjudication() throws Throwable {
+		browserUtils.sleep(1000);
 		if (Driver.getInstance().getCurrentUrl().contains("listChild")) {
 			for (WebElement msgs: adjudicationPage.adjListingSuccessfulMessages) {
 				assertTrue(msgs.isDisplayed());
 			}
 			assertTrue(adjudicationPage.adjListingSuccessfulMessages.get(0).getText().equals("The Case has been sent for Final Adjudication."));
 		}
-		System.out.println("Ran code");
 	}
 
 	@Then("^the Adjudication Recommendation fields become read only$")
@@ -342,7 +342,24 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 			adjudicationPage.adjListingTable_rowLink.click();
 		}
 		// FIND WAY TO VERIFY FIELDS ARE READ ONLY
+		String readOnlyType = "hidden";
+		int numOfEditGuidelineButtons = adjudicationPage.editGuidelinesButtons.size();
+		boolean doesReadyForFinalAdjudicationDisplay = adjudicationPage.Adjudication_readyForFinalAdjudication_container.isDisplayed();
+		boolean doesSelectFinalAdjudicatorDisplay = adjudicationPage.Adjudication_finalAdjudicator.isDisplayed();
 		
+		for (WebElement readOnlyFields : adjudicationPage.adjRecommendationReadOnlyFields) {
+			assertTrue(readOnlyFields.getAttribute("type").toString().equals(readOnlyType));
+		}
+		assertTrue(numOfEditGuidelineButtons==0);
+		assertTrue(!doesReadyForFinalAdjudicationDisplay);
+		assertTrue(!doesSelectFinalAdjudicatorDisplay);
+		
+		for (WebElement selectedGuidelines : adjudicationPage.adjGuidelines()) {
+			assertTrue(selectedGuidelines.isSelected());
+		}
+		for (WebElement selectedGuidelines : adjudicationPage.suitabilityGuidelines()) {
+			assertTrue(selectedGuidelines.isSelected());
+		}
 	}
 
 	@When("^user navigates to Case$")

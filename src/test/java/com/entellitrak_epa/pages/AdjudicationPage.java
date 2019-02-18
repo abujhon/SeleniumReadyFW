@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -49,6 +50,11 @@ public class AdjudicationPage {
 	@FindBy(xpath = "(//a[.='Edit'])[2]")
 	public WebElement suitabilityGuidelines_edit;
 	
+	@FindAll({
+		@FindBy(xpath = "//a[.='Edit']")
+	})
+	public List<WebElement> editGuidelinesButtons;
+	
 	public WebElement Adjudication_adjudicationRecommendation;
 	
 	public WebElement Adjudication_adjudicationRecommendationDate;
@@ -60,6 +66,21 @@ public class AdjudicationPage {
 	public WebElement Adjudication_readyForFinalAdjudication_no;
 	
 	public WebElement Adjudication_finalAdjudicator;
+	
+	@FindAll({
+		@FindBy(xpath = "//span[@id='Adjudication_seriousnessIssueCode_display']/preceding-sibling::input"),
+		@FindBy(xpath = "//span[@id='Adjudication_adjudicationRecommendationDate_display']/preceding-sibling::input"),
+		@FindBy(xpath = "//span[@id='Adjudication_adjudicationRecommendation_display']/preceding-sibling::input"),
+		@FindBy(xpath = "//span[@id='Adjudication_adjudicationSummary_display']/preceding-sibling::input")
+	})
+	public List<WebElement> adjRecommendationReadOnlyFields;
+	
+	@FindBy(id = "Adjudication_readyForFinalAdjudication-container")
+	public WebElement Adjudication_readyForFinalAdjudication_container;
+	
+	@FindBy(id = "Adjudication_finalAdjudicator-container")
+	public WebElement Adjudication_finalAdjudicator_container;
+	
 	/*
 	 * Adjudicative Guidelines
 	 */
@@ -142,7 +163,7 @@ public class AdjudicationPage {
 	public WebElement suitabilityGuidelines_refusalToProvideTestimony;
 	
 	/*
-	 * Adjudicative Guidelines display
+	 * Suitability Guidelines display
 	 */
 	
 	@FindBy(css = "#Adjudication_suitabilityGuideliness_display li")
@@ -168,9 +189,6 @@ public class AdjudicationPage {
 		adjFields_adjState.add(Adjudication_readyForFinalAdjudication_no);
 		return adjFields_adjState;
 	}
-	
-	@FindBy(xpath = "//fieldset[@id='adjudication-recommendation-group']//input[@type='hidden']")
-	public List<WebElement> adjRecommendationReadOnlyFields;
 	
 	public List<WebElement> adjGuidelines() {
 		List<WebElement> adjGuidelines = new ArrayList<>();
