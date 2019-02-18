@@ -105,9 +105,6 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 
 	@When("^user searches for case initiated in the Assigned Cases inbox$")
 	public void user_searches_for_case_initiated_in_the_Assigned_Cases_inbox()  {
-		
-		// might not work, double check and tweak
-		
 		String personNameInbox = intakeCreator.getLastName()+", "+intakeCreator.getFirstName();
 		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
 		basePage.enhancedInboxSearch.sendKeys(personNameInbox);
@@ -130,7 +127,7 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 	    browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
 		int x = 0;
 		for (WebElement personNames : basePage.enhancedInboxPersonNames) {
-			System.out.println(personNameInbox+" ----- "+personNames.getText());
+//			System.out.println(personNameInbox+" ----- "+personNames.getText());
 			if(personNames.getText().trim().equals(personNameInbox.trim())) {
 				targetName = basePage.enhancedInboxPersonNames.get(x).getText();
 				assertEquals(personNameInbox, targetName);
