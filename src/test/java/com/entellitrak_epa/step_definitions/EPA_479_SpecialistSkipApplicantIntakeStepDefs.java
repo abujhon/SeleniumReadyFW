@@ -53,13 +53,18 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 
 	@Then("^successful intake creation messages display$")
 	public void successful_intake_creation_messages_display()  {
-	    
+		browserUtils.sleep(1000);
+	    String expectedMessage = "New Intake form has been submitted.";
+		for (WebElement msgs : intakeInitiationPage.successfulMessages) {
+	    	assertTrue(msgs.isDisplayed());
+	    }
+	    assertTrue(intakeInitiationPage.successfulMessages.get(0).getText().equals(expectedMessage));
 	}
 
 	@Then("^a person and case link display$")
 	public void a_person_and_case_link_display()  {
-	    
-	   
+		assertTrue(intakeInitiationPage.intakePersonLink.isDisplayed());
+		assertTrue(intakeInitiationPage.intakeCaseLink.isDisplayed());
 	}
 
 	@When("^user clicks on the Case link$")
@@ -77,13 +82,14 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 		String actualStatus = casePage.caseSubwayWorkflowStatus.getText()
 				.substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim();
 		String expectedStatus = "Record Checks";
-		assertEquals(expectedStatus, actualStatus);
+		assertTrue(expectedStatus.equals(actualStatus));
 	}
 
 	@Then("^specialist assigned is the specialist who submitted the intake$")
 	public void specialist_assigned_is_the_specialist_who_submitted_the_intake()  {
-	    
-	   
+	    String expectedAssignedSpecialist = "Specialist, Automation";
+	    String actualAssignedSpecialist = casePage.Case_assignedSpecialist_display.getText().trim();
+	    assertTrue(expectedAssignedSpecialist.equals(actualAssignedSpecialist));
 	}
 
 	@When("^user navigates to home page$")
@@ -109,7 +115,7 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
 			System.out.println(personNameInbox+" ----- "+personNames.getText());
 			if(personNames.getText().trim().equals(personNameInbox.trim())) {
-				basePage.enhancedInboxPersonNames.get(x).click();
+//				basePage.enhancedInboxPersonNames.get(x).click();
 			}
 			x++;
 		}
@@ -136,7 +142,17 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 	@Then("^case status in the inbox displays as Record Checks$")
 	public void case_status_in_the_inbox_displays_as_Record_Checks()  {
 		String expectedStatus = "Record Checks";
-		// finish code for actualStatus
-		String actualTargetStatus; 
+		String actualTargetStatus="";
+		browserUtils.waitframeToBeAvailableAndSwitchToIt(basePage.enhancedInboxIframe);
+		int x = 0;
+		for (WebElement caseStatuses : basePage.enhancedInboxCaseStatus) {
+			System.out.println(expectedStatus+" ----- "+caseStatuses.getText());
+			if(caseStatuses.getText().trim().equals(expectedStatus.trim())) {
+				actualTargetStatus = basePage.enhancedInboxCaseStatus.get(x).getText();
+				assertEquals(expectedStatus, actualTargetStatus);
+			}
+			x++;
+		}
+		Driver.getInstance().switchTo().defaultContent();
 	}
 }

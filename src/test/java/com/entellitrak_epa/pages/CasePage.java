@@ -43,6 +43,8 @@ public class CasePage {
 
 	public WebElement Case_assignedSpecialist;
 	
+	public WebElement Case_assignedSpecialist_display;
+	
 	@FindBy(id = "Case_dateSpecialistAssigned_display")
 	public WebElement dateSpecialistAssigned;
 	
