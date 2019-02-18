@@ -256,6 +256,7 @@ public class IntakeCreator {
 				|| applicantType.equals("Student")) {
 			intakeInitiationPage.IntakeInitiation_contractNumber_searchButton.click();
 			intakeInitiationPage.IntakeInitiation_contractNumber_liveSearchInput.sendKeys("123456789AAA");
+			browserUtils.sleep(2000);
 			intakeInitiationPage.singleContractNumberResult.click();
 			intakeInitiationPage.IntakeInitiation_applicantTenureLessThan6Months_no.click();
 			intakeInitiationPage.IntakeInitiation_endDate.sendKeys(formFunctionsUtils.futureDate(100));
