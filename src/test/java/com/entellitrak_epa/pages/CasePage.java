@@ -291,8 +291,33 @@ public class CasePage {
 	@FindBy(css = "#displayPanel div:nth-child(5)")
 	public WebElement caseSubwayWorkflowStatus;
 	
+	@FindBy(css = "#displayPanel div:nth-child(4)")
+	public WebElement caseSubwayCaseStatus;
+	
 	/*
 	 * Case miscellaneous
+	 */
+	
+	
+	/*
+	 * Discontinue case popup
+	 */
+	
+	@FindBy(xpath = "//span[contains(text(), 'Discontinue Case')]")
+	public WebElement popUpDiscontinueHeader;
+	
+	@FindBy(xpath = "//span[@class = 'ui-icon ui-icon-alert']/ancestor::p")
+	public WebElement popUpContent;
+	
+	@FindBy(xpath = "//button[contains(text(), 'No')]")
+	public WebElement popup_no;
+	
+	@FindBy(xpath = "//button[contains(text(), 'Yes')]")
+	public WebElement popup_yes;
+	
+	
+	/*
+	 * 
 	 */
 	
 	public WebElement Case_createdOn_display;
