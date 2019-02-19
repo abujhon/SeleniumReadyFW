@@ -39,7 +39,8 @@ public class FormFunctionsUtils {
 	SignOnPage signOnPg = new SignOnPage();
 	
 	public void signOut() {
-		basePg.signOut.click();
+//		basePg.signOut.click();
+		Driver.getInstance().get("http://52.3.187.122:8080/epa-bi-test/system.logout.do");
 	    browserUtils.waitForElementToBeVisible(basePg.loginLink);
 	    basePg.loginLink.click();
 	    browserUtils.waitForElementToBeVisible(signOnPg.username);
