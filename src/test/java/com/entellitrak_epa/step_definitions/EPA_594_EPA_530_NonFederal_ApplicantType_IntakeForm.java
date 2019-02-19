@@ -105,6 +105,7 @@ public class EPA_594_EPA_530_NonFederal_ApplicantType_IntakeForm {
 		intakePg.IntakeInitiation_contractNumber_searchButton.click();
 		browserUtils.waitForElementToBeVisible(intakePg.IntakeInitiation_contractNumber_liveSearchInput);
 		intakePg.IntakeInitiation_contractNumber_liveSearchInput.sendKeys(contractNum);
+		browserUtils.sleep(1500);
 		browserUtils.waitForElementToBeClickable(Driver.getInstance().findElement(By.xpath("//a[contains(text(),'77777')]")));
 		Driver.getInstance().findElement(By.xpath("//a[contains(text(),'77777')]")).click();
 		browserUtils.sleep(900);
