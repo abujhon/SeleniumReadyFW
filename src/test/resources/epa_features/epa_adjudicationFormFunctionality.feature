@@ -1,4 +1,3 @@
-@TEST_EPA-585 
 Feature: Automation: Adjudication Form - Display and Assignment Functionality 
 
 Background: 
@@ -9,6 +8,7 @@ Background:
 	And user pushes created case to the Adjudication state 
 	And user logs out from PSS 
 	
+@TEST_EPA-585	
 Scenario: Automation: Adjudication Form - Display and Assignment Functionality 
 	Given user navigates to PSS 
 	And user logs in as an Adjudicator 
