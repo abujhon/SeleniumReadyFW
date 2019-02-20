@@ -91,7 +91,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		if (!(casePage.Case_eqipRequired_no.isSelected() && casePage.Case_eqipRequired_yes.isSelected())) {
 			casePage.Case_eqipRequired_yes.click();
 		}
-		System.out.println(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim());
 		if(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Applicant Intake")) {
 			formFunctionsUtils.dropDown(casePage.actionToTake, "Submit Forms");
 		}
@@ -123,7 +122,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 			System.out.println("not at the Adjudication state - test failed");
 			fail();
 		}
-		System.out.println("Made it to Adjudication");
 	}
 
 	@When("^user logs out from PSS$")
@@ -152,7 +150,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		browserUtils.sleep(1000);
 		int x = 0;
 		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
-			System.out.println(personNameInbox+" ----- "+personNames.getText());
 			if(personNames.getText().trim().equals(personNameInbox.trim())) {
 				basePage.enhancedInboxPersonNames.get(x).click();
 			}
@@ -292,12 +289,10 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		
 		// adj summary mutability check
 		String existingAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getText().trim();
-		System.out.println("existing summary = "+existingAdjSummary);
 		String updatedTextAdjSummary;
 		adjudicationPage.Adjudication_adjudicationSummary.clear();
 		adjudicationPage.Adjudication_adjudicationSummary.sendKeys("Testing editability of text field");
 		updatedTextAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getAttribute("value");
-		System.out.println("updated summary = "+updatedTextAdjSummary);
 		
 	}
 
@@ -353,13 +348,8 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		assertTrue(numOfEditGuidelineButtons==0);
 		assertTrue(!doesReadyForFinalAdjudicationDisplay);
 		assertTrue(!doesSelectFinalAdjudicatorDisplay);
-		
-		for (WebElement selectedGuidelines : adjudicationPage.adjGuidelines()) {
-			assertTrue(selectedGuidelines.isSelected());
-		}
-		for (WebElement selectedGuidelines : adjudicationPage.suitabilityGuidelines()) {
-			assertTrue(selectedGuidelines.isSelected());
-		}
+		assertTrue(adjudicationPage.adjGuidelinesSelectedDisplay.size() == 13);
+		assertTrue(adjudicationPage.suitabilityGuidelinesSelectedDisplay.size() == 9);
 	}
 
 	@When("^user navigates to Case$")
