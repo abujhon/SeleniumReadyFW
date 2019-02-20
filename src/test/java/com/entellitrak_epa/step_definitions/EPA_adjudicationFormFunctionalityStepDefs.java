@@ -141,6 +141,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@When("^user navigates to the Assigned Cases queue$")
 	public void user_navigates_to_the_Assigned_Cases_queue() throws Throwable {
+		browserUtils.sleep(1000);
 		basePage.myCases.click();
 	}
 
