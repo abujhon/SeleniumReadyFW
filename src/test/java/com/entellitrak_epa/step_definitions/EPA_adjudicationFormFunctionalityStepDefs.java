@@ -362,6 +362,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@Then("^the workflow status of Case is now Final Adjudication$")
 	public void the_workflow_status_of_Case_is_now_Final_Adjudication() throws Throwable {
+		browserUtils.sleep(1000);
 		String actualCaseWorkflowStatus = casePage.caseSubwayWorkflowStatus.getText()
 				.substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim();
 		String expectedCaseWorkflowStatus = "Final Adjudication";
