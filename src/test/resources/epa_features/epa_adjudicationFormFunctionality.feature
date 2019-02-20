@@ -45,4 +45,5 @@ Scenario: Automation: Adjudication Form - Display and Assignment Functionality
 	And the Adjudication Recommendation fields become read only 
 	
 	When user navigates to Case 
-	Then the workflow status of Case is now Final Adjudication 
+	Then the workflow status of Case is now Final Adjudication
+	And user logs out from PSS
