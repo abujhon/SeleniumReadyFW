@@ -296,7 +296,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		adjudicationPage.Adjudication_adjudicationSummary.clear();
 		adjudicationPage.Adjudication_adjudicationSummary.sendKeys("Testing editability of text field");
 		updatedTextAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getAttribute("value");
-		
+		assertTrue(!(existingAdjSummary.equals(updatedTextAdjSummary)));
 	}
 
 	@When("^user sets Ready for Final Adjudication to Yes$")
