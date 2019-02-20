@@ -77,6 +77,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 						basePage.rapidSearchLastName.get(0));
 			}
 		}
+		browserUtils.sleep(1000);
 		browserUtils.switchTabs("Person");
 		browserUtils.waitForElementToBeClickable(personPage.caseSummaryCaseLink);
 		personPage.caseSummaryCaseLink.click();
