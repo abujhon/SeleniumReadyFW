@@ -71,6 +71,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		basePage.rapidSearchInput.sendKeys(formattedSSN);
 		basePage.rapidSearchIcon.click();
 		browserUtils.waitForElementToBeVisible(basePage.rapidSearchResultsTable);
+		browserUtils.sleep(1000);
 		for (WebElement SSNs : basePage.rapidSearchSSN) {
 			if (SSNs.getText().equals(formattedSSN)) {
 				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].click();",
