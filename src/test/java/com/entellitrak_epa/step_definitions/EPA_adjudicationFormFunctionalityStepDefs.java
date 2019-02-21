@@ -46,10 +46,18 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@When("^user logs in as a Supervisor$")
 	public void user_logs_in_as_a_Supervisor() throws Throwable {
-		browserUtils.waitForElementToBeVisible(signOnPage.username);
-		signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
-		signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
-		signOnPage.submit.click();
+		if(Driver.getInstance().getCurrentUrl().contains("logout.do")) {
+			basePage.loginLink.click();
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();
+		} else {
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();	
+		}
 	}
 
 	@When("^user creates an intake$")
