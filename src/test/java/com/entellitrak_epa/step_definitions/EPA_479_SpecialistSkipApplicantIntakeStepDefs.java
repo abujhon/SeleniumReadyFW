@@ -29,10 +29,18 @@ public class EPA_479_SpecialistSkipApplicantIntakeStepDefs {
 
 	@Given("^user logs in as a Specialist$")
 	public void user_logs_in_as_a_Specialist()  {
-		browserUtils.waitForElementToBeVisible(signOnPage.username);
-		signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_specialist"));
-		signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
-		signOnPage.submit.click();
+		if(Driver.getInstance().getCurrentUrl().contains("logout.do")) {
+			basePage.loginLink.click();
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_specialist"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();
+		} else {
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_specialist"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();	
+		}
 	}
 
 	@When("^user clicks on Start Intake$")
