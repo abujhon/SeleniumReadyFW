@@ -243,14 +243,15 @@ public class EPA_31_discontnueCaseFromAnyState {
 	public void user_selects_Send_to_Pre_Screening_Review_Queue_from_action_to_take() throws Throwable {
 		browserUtils.scrollDown();
 		browserUtils.waitForElementToBeVisible(casePg.actionToTake);
-		formUtils.dropDown(casePg.actionToTake, "Send to Pre-Screening Review Queue");
+		formUtils.dropDown(casePg.actionToTake, "Send to Pre-Screening Queue");
 	}
 
 	@Then("^workflow status becomes Pre-Screening Review Queue$")
 	public void workflow_status_becomes_Pre_Screening_Review_Queue() throws Throwable {
 	   browserUtils.waitForElementToBeVisible(casePg.caseSubwayWorkflowStatus);
 	   String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
-	    assertTrue(workflow.equals("Pre-Screening Review Queue"));
+	   System.out.println(workflow);
+	    assertTrue(workflow.equals("Pre-Screening Queue"));
 	}
 
 	@When("^user slects Send for Pre-Screening Review$")

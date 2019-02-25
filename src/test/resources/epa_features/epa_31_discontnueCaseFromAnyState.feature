@@ -1,8 +1,8 @@
-@Regression @TEST_EPA-588
+@Regression 
 Feature: Discontinue Case from any point in the workflow 
 
 
- 
+ @TEST_EPA-588
 Scenario: discontinue case from intake forms review 
 	Given hr intake initiator logs in 
 	And user creates an intake for "Federal" applicant with "mabuduhelili@chainbridgesolutions.com"
@@ -30,7 +30,7 @@ Scenario: discontinue case from intake forms review
 	Then case status becomes inactive and workflow status becomes closed 
 	And user logs out from EPA 
 	
-	
+	@TEST_EPA-588
 Scenario: discontinue case from record check state 
 	Given hr intake initiator logs in 
 	And user creates an intake for "Political Appointee" applicant with "mabuduhelili@chainbridgesolutions.com" 
@@ -62,7 +62,7 @@ Scenario: discontinue case from record check state
 	Then case status becomes inactive and workflow status becomes closed 
 	And user logs out from EPA 
 	
-	
+	@TEST_EPA-588
 Scenario: discontinue case from adjudication state 
 
 	Given hr intake initiator logs in 
