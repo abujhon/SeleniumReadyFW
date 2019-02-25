@@ -35,7 +35,7 @@ import cucumber.api.java.en.When;
  * @author Musa
  *
  */
-public class EPA_600_CreateReleaseToNBIB_Trigger {
+public class EPA_600_601_602_Triggers {
 	
 	
 	SignOnPage signOnPg = new SignOnPage();
@@ -206,6 +206,7 @@ public class EPA_600_CreateReleaseToNBIB_Trigger {
 	    formUtils.dropDown(prescreeningPg.PreScreening_preScreeningDecision, "Favorable");
 	    browserUtils.sleep(900);
 	    assertTrue(prescreeningPg.releaseToNbibButton.isEnabled());
+	    browserUtils.sleep(900);
 	}
 
 	@When("^user clicks the Release to NBIB button$")
@@ -235,6 +236,51 @@ public class EPA_600_CreateReleaseToNBIB_Trigger {
 	    
 	    String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
 		assertTrue(workflow.equals("NBIB Investigation Processing"));
+	}
+	
+	
+	//  EPA-601 
+	
+	@When("^user selects Yes to Skip investigation$")
+	public void user_selects_Yes_to_Skip_investigation() throws Throwable {
+		
+	    prescreeningPg.PreScreening_skipInvestigation_yes.click();
+	    browserUtils.sleep(500);
+	}
+
+	@Then("^Skip Investigation trigger buttons becomes active$")
+	public void skip_Investigation_trigger_buttons_becomes_active() throws Throwable {
+	    assertTrue(prescreeningPg.skipInvestigationButton.isEnabled());
+	    browserUtils.sleep(900);
+	}
+
+	@When("^user clicks the Skip Investigation button$")
+	public void user_clicks_the_Skip_Investigation_button() throws Throwable {
+		
+		prescreeningPg.PreScreening_sacReceivedDate.sendKeys(formUtils.pastDate(12));
+		formUtils.dropDown(prescreeningPg.PreScreening_sacResults, "Favorable");
+		
+		formUtils.dropDown(prescreeningPg.PreScreening_sacAdjudication, "Unclassifiable");
+		prescreeningPg.PreScreening_sacAdjudicationDate.sendKeys(formUtils.pastDate(30));
+		
+		prescreeningPg.PreScreening_preScreeningDecisionDate.sendKeys(formUtils.currentDate());
+		prescreeningPg.PreScreening_interimAdjudicativeComments.sendKeys("This is FSEM comments....");
+		prescreeningPg.PreScreening_convictedFelonOrStandAlone_no.click();
+		
+	    prescreeningPg.skipInvestigationButton.click();
+	    browserUtils.waitForElementToBeVisible(casePg.pre_screeningCTO);
+	    assertTrue(casePg.pre_screeningCTO.isDisplayed());
+	    
+	}
+
+	@Then("^case workflow becomes Adjudication Queue$")
+	public void case_workflow_becomes_Adjudication_Queue() throws Throwable {
+		Driver.getInstance().findElement(By.xpath("//span[contains(text(), 'CASE')]")).click();
+		browserUtils.waitForElementToBeVisible(casePg.applicantInformationFieldset);
+	    assertTrue(casePg.caseSubwayWorkflowStatus.isDisplayed());
+	    
+	    String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
+		assertTrue(workflow.equals("Adjudication Queue"));
 	}
 
 }
