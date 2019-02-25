@@ -87,6 +87,10 @@ public class PreScreeningPage {
 	
 	public WebElement PreScreening_finalPreScreeningAdjudicator;
 	
+	public WebElement PreScreening_skipInvestigation_yes;
+	
+	public WebElement PreScreening_skipInvestigation_no;
+	
 	/*
 	 * Pre-Screening buttons
 	 */
