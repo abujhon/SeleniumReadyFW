@@ -317,8 +317,26 @@ public class CasePage {
 	
 	
 	/*
-	 * 
+	 * CTOs 
 	 */
+	
+	@FindBy(xpath = "//a[contains(text(), 'Record Check')]")
+	public WebElement recordCheckCTO;
+	
+	@FindBy(xpath = "//a[contains(text(), 'Pre-Screening')]")
+	public WebElement pre_screeningCTO;
+	
+	@FindBy(xpath = "//a[contains(text(), 'Investigation')]")
+	public WebElement investigationCTO;
+	
+	@FindBy(xpath = "//a[contains(text(), 'Adjudication')]")
+	public WebElement adjudicationCTO;
+	
+	@FindBy(xpath = "//a[contains(text(), 'Documents')]")
+	public WebElement documentsCTO;
+	
+	@FindBy(xpath = "//a[contains(text(), 'LOI')]")
+	public WebElement LOI_CTO;
 	
 	public WebElement Case_createdOn_display;
 	public WebElement Case_createdBy_display;

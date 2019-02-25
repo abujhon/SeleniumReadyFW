@@ -93,6 +93,10 @@ public class PreScreeningPage {
 	
 	public WebElement saveButton;
 	
-	public WebElement deleteButton;
+	public WebElement releaseToNbibButton;
+	
+	public WebElement unfavorableButton;
+	
+	public WebElement skipInvestigationButton;
 	
 }
