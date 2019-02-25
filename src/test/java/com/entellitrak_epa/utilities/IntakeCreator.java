@@ -395,14 +395,14 @@ public class IntakeCreator {
 
 	private String fakeEmail = "fakeEmail123@chainbridgesolutionsFakeEmail.com";
 
-	private String firstName, middleName, lastName, SSN, pSSN;
+	private static String firstName, middleName, lastName, SSN, pSSN;
 
 	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String randomFirst) {
-		this.firstName = randomFirst;
+		IntakeCreator.firstName = randomFirst;
 	}
 
 	public String getLastName() {
@@ -410,7 +410,7 @@ public class IntakeCreator {
 	}
 
 	public void setLastName(String randomLast) {
-		this.lastName = randomLast;
+		IntakeCreator.lastName = randomLast;
 	}
 
 	public String getMiddleName() {
@@ -418,7 +418,7 @@ public class IntakeCreator {
 	}
 
 	public void setMiddleName(String randomMiddle) {
-		this.middleName = randomMiddle;
+		IntakeCreator.middleName = randomMiddle;
 	}
 
 	public String getSSN() {
@@ -426,7 +426,7 @@ public class IntakeCreator {
 	}
 
 	public void setSSN(String randomSSN) {
-		this.SSN = randomSSN;
+		IntakeCreator.SSN = randomSSN;
 	}
 
 	public String getpSSN() {
@@ -434,7 +434,7 @@ public class IntakeCreator {
 	}
 
 	public void setpSSN(String randonPSSN) {
-		this.pSSN = randonPSSN;
+		IntakeCreator.pSSN = randonPSSN;
 	}
 
 }

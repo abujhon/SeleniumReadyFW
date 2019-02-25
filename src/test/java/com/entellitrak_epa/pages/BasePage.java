@@ -92,17 +92,35 @@ public class BasePage {
 	@FindBy(id = "eiFrame")
 	public WebElement enhancedInboxIframe;
 	
+	@FindBy(id = "inboxes")
+	public WebElement inboxSelection;
+	
 	@FindBy(css = "#inbox_content_table_filter input")
 	public WebElement enhancedInboxSearch;
+	
+	@FindBy(css = "input[name='inbox_content_actionableRow']")
+	public List<WebElement> enhancedInboxAssignmentCheckboxes;
 	
 	@FindBy(css = "#inbox_content_table td:first-child")
 	public List<WebElement> enhancedInboxPersonNames;
 	
+	@FindBy(css = "#inbox_content_table td:nth-of-type(2)")
+	public List<WebElement> enhancedInboxPersonNames_assignmentQueues;
+	
 	@FindBy(css = "#inbox_content_table td:nth-child(5)")
 	public List<WebElement> enhancedInboxCaseStatus;
 	
+	@FindBy(css = "#inbox_content_table td:nth-of-type(6)")
+	public List<WebElement> enhancedInboxCaseStatus_assignmentQueues;
+	
 	@FindBy(css = "#inbox_content_table td:nth-child(7)")
 	public List<WebElement> enhancedInboxLastSaveDate;
+	
+	@FindBy(id = "inbox_content_actions")
+	public WebElement enhancedInboxAssignmentDropdown;
+	
+	@FindBy(id = "inbox_content_actionSubmit")
+	public WebElement enhancedInboxAssign;
 	
 	/*
 	 * Breadcrumbs

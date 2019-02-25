@@ -46,10 +46,18 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@When("^user logs in as a Supervisor$")
 	public void user_logs_in_as_a_Supervisor() throws Throwable {
-		browserUtils.waitForElementToBeVisible(signOnPage.username);
-		signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
-		signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
-		signOnPage.submit.click();
+		if(Driver.getInstance().getCurrentUrl().contains("logout.do")) {
+			basePage.loginLink.click();
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();
+		} else {
+			browserUtils.waitForElementToBeVisible(signOnPage.username);
+			signOnPage.username.sendKeys(PropertiesReader.getProperty("automation_supervisor"));
+			signOnPage.password.sendKeys(PropertiesReader.getProperty("password"));
+			signOnPage.submit.click();	
+		}
 	}
 
 	@When("^user creates an intake$")
@@ -71,12 +79,14 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		basePage.rapidSearchInput.sendKeys(formattedSSN);
 		basePage.rapidSearchIcon.click();
 		browserUtils.waitForElementToBeVisible(basePage.rapidSearchResultsTable);
+		browserUtils.sleep(1000);
 		for (WebElement SSNs : basePage.rapidSearchSSN) {
 			if (SSNs.getText().equals(formattedSSN)) {
 				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].click();",
 						basePage.rapidSearchLastName.get(0));
 			}
 		}
+		browserUtils.sleep(1000);
 		browserUtils.switchTabs("Person");
 		browserUtils.waitForElementToBeClickable(personPage.caseSummaryCaseLink);
 		personPage.caseSummaryCaseLink.click();
@@ -91,7 +101,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		if (!(casePage.Case_eqipRequired_no.isSelected() && casePage.Case_eqipRequired_yes.isSelected())) {
 			casePage.Case_eqipRequired_yes.click();
 		}
-		System.out.println(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim());
 		if(casePage.caseSubwayWorkflowStatus.getText().substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim().equals("Applicant Intake")) {
 			formFunctionsUtils.dropDown(casePage.actionToTake, "Submit Forms");
 		}
@@ -123,7 +132,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 			System.out.println("not at the Adjudication state - test failed");
 			fail();
 		}
-		System.out.println("Made it to Adjudication");
 	}
 
 	@When("^user logs out from PSS$")
@@ -141,6 +149,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@When("^user navigates to the Assigned Cases queue$")
 	public void user_navigates_to_the_Assigned_Cases_queue() throws Throwable {
+		browserUtils.sleep(1000);
 		basePage.myCases.click();
 	}
 
@@ -152,7 +161,6 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		browserUtils.sleep(1000);
 		int x = 0;
 		for (WebElement personNames: basePage.enhancedInboxPersonNames) {
-			System.out.println(personNameInbox+" ----- "+personNames.getText());
 			if(personNames.getText().trim().equals(personNameInbox.trim())) {
 				basePage.enhancedInboxPersonNames.get(x).click();
 			}
@@ -292,13 +300,11 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		
 		// adj summary mutability check
 		String existingAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getText().trim();
-		System.out.println("existing summary = "+existingAdjSummary);
 		String updatedTextAdjSummary;
 		adjudicationPage.Adjudication_adjudicationSummary.clear();
 		adjudicationPage.Adjudication_adjudicationSummary.sendKeys("Testing editability of text field");
 		updatedTextAdjSummary = adjudicationPage.Adjudication_adjudicationSummary.getAttribute("value");
-		System.out.println("updated summary = "+updatedTextAdjSummary);
-		
+		assertTrue(!(existingAdjSummary.equals(updatedTextAdjSummary)));
 	}
 
 	@When("^user sets Ready for Final Adjudication to Yes$")
@@ -353,13 +359,8 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		assertTrue(numOfEditGuidelineButtons==0);
 		assertTrue(!doesReadyForFinalAdjudicationDisplay);
 		assertTrue(!doesSelectFinalAdjudicatorDisplay);
-		
-		for (WebElement selectedGuidelines : adjudicationPage.adjGuidelines()) {
-			assertTrue(selectedGuidelines.isSelected());
-		}
-		for (WebElement selectedGuidelines : adjudicationPage.suitabilityGuidelines()) {
-			assertTrue(selectedGuidelines.isSelected());
-		}
+		assertTrue(adjudicationPage.adjGuidelinesSelectedDisplay.size() == 13);
+		assertTrue(adjudicationPage.suitabilityGuidelinesSelectedDisplay.size() == 9);
 	}
 
 	@When("^user navigates to Case$")
@@ -369,6 +370,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@Then("^the workflow status of Case is now Final Adjudication$")
 	public void the_workflow_status_of_Case_is_now_Final_Adjudication() throws Throwable {
+		browserUtils.sleep(1000);
 		String actualCaseWorkflowStatus = casePage.caseSubwayWorkflowStatus.getText()
 				.substring(casePage.caseSubwayWorkflowStatus.getText().indexOf(":")+2).trim();
 		String expectedCaseWorkflowStatus = "Final Adjudication";
