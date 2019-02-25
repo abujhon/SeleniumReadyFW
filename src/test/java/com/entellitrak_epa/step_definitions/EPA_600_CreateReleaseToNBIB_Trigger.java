@@ -62,12 +62,13 @@ public class EPA_600_CreateReleaseToNBIB_Trigger {
 	@When("^user navigates to FSEM unassigned queue and assignes the case to FSEM adj$")
 	public void user_navigates_to_FSEM_unassigned_queue_and_assignes_the_case_to_FSEM_adj() throws Throwable {
 	    basePg.myCases.click();
+	    browserUtils.sleep(2000);
 	    WebElement myCaseFrame = Driver.getInstance().findElement(By.id("myCasesIframe"));
 	    browserUtils.waitForElementToBeVisible(myCaseFrame);
 	    assertTrue(myCaseFrame.isDisplayed());
 	    
 	    Driver.getInstance().switchTo().frame(mycasepg.eiFrame);
-	    browserUtils.sleep(500);
+	    browserUtils.sleep(1000);
 	    assertTrue(mycasepg.enhancedInbox.isDisplayed());
 	    
 	    formUtils.partialDropDown(mycasepg.inboxes, "Unassigned Cases");
