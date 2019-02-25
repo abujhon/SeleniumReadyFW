@@ -75,19 +75,14 @@ public class EPA_600_601_602_Triggers {
 	    browserUtils.sleep(1000);
 	    
 	    List<WebElement> tableContent = Driver.getInstance().findElements(By.xpath("(//table[@id='inbox_content_table']/tbody/tr/td[2])"));
-	    browserUtils.sleep(900);
+	    browserUtils.sleep(1000);
 	    int count = 0;
-	    System.out.println(" my name --> "+intakeCreator.getLastName()+", "+intakeCreator.getFirstName());
-	    System.out.println("SSN is --> "+ intakeCreator.getSSN());
+	    
 	    for (WebElement webElement : tableContent) {
 	    	++count;
-	    	
-	    	System.out.println(" in the loop "+ count);
 			String names = webElement.getText();
-			System.out.println("Names in unassigned queue --> " +names);
+			
 			if (names.equals(intakeCreator.getLastName()+", "+intakeCreator.getFirstName())) {
-				
-				System.out.println("in the unassigned if");
 				Driver.getInstance().findElement(By.xpath("(//input[@name='inbox_content_actionableRow'])["+ count +"]")).click();
 				break;
 			}
@@ -120,13 +115,10 @@ public class EPA_600_601_602_Triggers {
 	    browserUtils.sleep(1000);
 	    
 	    List<WebElement> tableContent = Driver.getInstance().findElements(By.xpath("(//table[@id='inbox_content_table']/tbody/tr/td[1])"));
-	    browserUtils.sleep(900);
+	    browserUtils.sleep(1000);
 	    for (WebElement webElement : tableContent) {
-	    	System.out.println(" in the loop ");
 			String names = webElement.getText();
-			System.out.println("Names in assigned queue --> " + names);
 			if (names.equals(intakeCreator.getLastName()+", "+intakeCreator.getFirstName())) {
-				System.out.println("in the assigned if");
 				webElement.click();
 				break;
 			}
@@ -281,6 +273,50 @@ public class EPA_600_601_602_Triggers {
 	    
 	    String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
 		assertTrue(workflow.equals("Adjudication Queue"));
+	}
+	
+	
+	// EPA-602
+	
+	@When("^user selects Unfavorable from prescreening decision dropdown$")
+	public void user_selects_Unfavorable_from_prescreening_decision_dropdown() throws Throwable {
+	    formUtils.dropDown(prescreeningPg.PreScreening_preScreeningDecision, "Unfavorable");
+	}
+	
+	@Then("^Unfavorable trigger button is enabled$")
+	public void unfavorable_trigger_button_is_enabled() throws Throwable {
+	    browserUtils.sleep(900);
+	    assertTrue(prescreeningPg.unfavorableButton.isEnabled());
+		
+	}
+
+	@When("^user clicks the Unfavorable trigger button$")
+	public void user_clicks_the_Unfavorable_trigger_button() throws Throwable {
+		
+		prescreeningPg.PreScreening_sacReceivedDate.sendKeys(formUtils.pastDate(12));
+		formUtils.dropDown(prescreeningPg.PreScreening_sacResults, "Unfavorable");
+		formUtils.dropDown(prescreeningPg.PreScreening_sacAdjudication, "Unclassifiable");
+		prescreeningPg.PreScreening_sacAdjudicationDate.sendKeys(formUtils.pastDate(30));
+		
+		prescreeningPg.PreScreening_preScreeningDecisionDate.sendKeys(formUtils.currentDate());
+		prescreeningPg.PreScreening_interimAdjudicativeComments.sendKeys("This is FSEM comments....");
+		prescreeningPg.PreScreening_convictedFelonOrStandAlone_no.click();
+		
+	    prescreeningPg.unfavorableButton.click();
+	    browserUtils.waitForElementToBeVisible(casePg.pre_screeningCTO);
+	    assertTrue(casePg.pre_screeningCTO.isDisplayed());
+	    
+	}
+
+	@Then("^case workflow becomes PreScreening Decision Review Queue state$")
+	public void case_workflow_becomes_PreScreening_Decision_Review_Queue_state() throws Throwable {
+	    
+		Driver.getInstance().findElement(By.xpath("//span[contains(text(), 'CASE')]")).click();
+		browserUtils.waitForElementToBeVisible(casePg.applicantInformationFieldset);
+	    assertTrue(casePg.caseSubwayWorkflowStatus.isDisplayed());
+	    
+	    String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
+		assertTrue(workflow.equals("Pre-Screening Decision Review Queue"));
 	}
 
 }
