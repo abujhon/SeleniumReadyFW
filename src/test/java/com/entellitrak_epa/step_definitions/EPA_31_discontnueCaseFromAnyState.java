@@ -102,11 +102,11 @@ public class EPA_31_discontnueCaseFromAnyState {
 	    basePg.rapidSearchInput.sendKeys(formattedSSN);
 	    basePg.rapidSearchIcon.click();
 	    browserUtils.waitForElementToBeVisible(basePg.rapidSearchResultsTable);
-	    browserUtils.sleep(900);
+	    browserUtils.sleep(1200);
 	    for (WebElement SSNs : basePg.rapidSearchSSN) {
-			if (SSNs.getText().equals(formattedSSN)) {
+			if (SSNs.getText().equals(formattedSSN.substring(7))) {
 				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].click();",
-						basePg.rapidSearchLastName.get(0));
+						basePg.rapidSearchName.get(0));
 			}
 		}
 	    browserUtils.sleep(900);
@@ -250,8 +250,7 @@ public class EPA_31_discontnueCaseFromAnyState {
 	public void workflow_status_becomes_Pre_Screening_Review_Queue() throws Throwable {
 	   browserUtils.waitForElementToBeVisible(casePg.caseSubwayWorkflowStatus);
 	   String workflow = casePg.caseSubwayWorkflowStatus.getText().substring(16).trim();
-	   System.out.println(workflow);
-	    assertTrue(workflow.equals("Pre-Screening Queue"));
+	   assertTrue(workflow.equals("Pre-Screening Queue"));
 	}
 
 	@When("^user slects Send for Pre-Screening Review$")

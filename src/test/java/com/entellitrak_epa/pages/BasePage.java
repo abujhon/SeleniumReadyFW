@@ -71,18 +71,15 @@ public class BasePage {
 	public WebElement rapidSearchResultsTable;
 	
 	@FindBy(css = "#rapidSearchResultsTable td:nth-child(1) a")
-	public List<WebElement> rapidSearchLastName;
+	public List<WebElement> rapidSearchName;
 	
 	@FindBy(css = "#rapidSearchResultsTable td:nth-child(2)")
-	public List<WebElement> rapidSearchFirstName;
-	
-	@FindBy(css = "#rapidSearchResultsTable td:nth-child(3)")
 	public List<WebElement> rapidSearchSSN;
 	
-	@FindBy(css = "#rapidSearchResultsTable td:nth-child(4)")
+	@FindBy(css = "#rapidSearchResultsTable td:nth-child(6)")
 	public List<WebElement> rapidSearchStatus;
 	
-	@FindBy(css = "#rapidSearchResultsTable td:nth-child(5)")
+	@FindBy(css = "#rapidSearchResultsTable td:nth-child(7)")
 	public List<WebElement> rapidSearchCreationDate;
 	
 	/*
