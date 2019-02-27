@@ -83,7 +83,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 		for (WebElement SSNs : basePage.rapidSearchSSN) {
 			if (SSNs.getText().equals(formattedSSN)) {
 				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].click();",
-						basePage.rapidSearchLastName.get(0));
+						basePage.rapidSearchName.get(0));
 			}
 		}
 		browserUtils.sleep(1000);

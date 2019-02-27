@@ -4,6 +4,7 @@
 package com.entellitrak_epa.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.entellitrak_epa.utilities.Driver;
@@ -30,6 +31,9 @@ public class MyCasesPage {
 	public WebElement inbox_content_actions;
 	
 	public WebElement inbox_content_actionSubmit;
+	
+	@FindBy(xpath = "//th[contains(text(), 'Last Save Date')]")
+	public WebElement lastSaveDateSorting;
 	
 	
 

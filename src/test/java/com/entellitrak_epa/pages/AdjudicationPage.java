@@ -223,4 +223,24 @@ public class AdjudicationPage {
 	}
 	
 	
+	public WebElement sendToFinalAdjudicationButton;
+	
+	public WebElement requestCorrectionButton;
+	
+	public WebElement Adjudication_returnToAdjudicator_yes;
+	
+	public WebElement Adjudication_returnToAdjudicator_no;
+	
+	public WebElement Adjudication_adjudicationDecision;
+	
+	public WebElement Adjudication_adjudicationDecisionDate;
+	
+	public WebElement Adjudication_comments;
+	
+	public WebElement Adjudication_reasonForReturn;
+	
+	
+	
+	
+	
 }
