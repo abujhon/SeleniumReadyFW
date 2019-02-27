@@ -102,7 +102,7 @@ public class EPA_31_discontnueCaseFromAnyState {
 	    basePg.rapidSearchInput.sendKeys(formattedSSN);
 	    basePg.rapidSearchIcon.click();
 	    browserUtils.waitForElementToBeVisible(basePg.rapidSearchResultsTable);
-	    browserUtils.sleep(1200);
+	    browserUtils.sleep(2000);
 	    for (WebElement SSNs : basePg.rapidSearchSSN) {
 			if (SSNs.getText().equals(formattedSSN.substring(7))) {
 				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].click();",
