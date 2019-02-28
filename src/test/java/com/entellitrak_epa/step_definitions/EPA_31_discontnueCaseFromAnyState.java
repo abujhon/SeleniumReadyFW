@@ -105,7 +105,9 @@ public class EPA_31_discontnueCaseFromAnyState {
 	    browserUtils.sleep(2000);
 	    for (WebElement SSNs : basePg.rapidSearchSSN) {
 			if (SSNs.getText().equals(formattedSSN.substring(7))) {
-				basePg.rapidSearchName.get(0).click();
+				//basePg.rapidSearchName.get(0).click();
+				((JavascriptExecutor) Driver.getInstance()).executeScript("arguments[0].scrollIntoView(true).click();",
+						basePg.rapidSearchName.get(0));
 			}
 		}
 	    browserUtils.sleep(900);
