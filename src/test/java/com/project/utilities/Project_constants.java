@@ -9,7 +9,7 @@ import com.project.pages.SignOnPage;
  * @author Musa
  *
  */
-public class EPA_constants {
+public class Project_constants {
 	
 	/*
 	 * Any constant variables that correspond to the EPA project, such as url, will be

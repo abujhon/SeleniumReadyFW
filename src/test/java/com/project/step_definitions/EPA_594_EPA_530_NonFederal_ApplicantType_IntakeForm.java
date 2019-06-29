@@ -12,7 +12,7 @@ import com.project.pages.IntakeInitiationPage;
 import com.project.pages.SignOnPage;
 import com.project.utilities.BrowserUtils;
 import com.project.utilities.Driver;
-import com.project.utilities.EPA_constants;
+import com.project.utilities.Project_constants;
 import com.project.utilities.FormFunctionsUtils;
 import com.project.utilities.PropertiesReader;
 
@@ -32,13 +32,13 @@ public class EPA_594_EPA_530_NonFederal_ApplicantType_IntakeForm {
 	BrowserUtils browserUtils = new BrowserUtils();
 	BasePage basePg = new BasePage();
 	FormFunctionsUtils formUtils = new FormFunctionsUtils();
-	EPA_constants constant = new EPA_constants();
+	Project_constants constant = new Project_constants();
 	
 	String appType = "";
 	
 	@Given("^user logs in the system as COR-Intake initiator$")
 	public void user_logs_in_the_system_as_COR_Intake_initiator() throws Throwable {
-		 Driver.getInstance().get(EPA_constants.URL);
+		 Driver.getInstance().get(Project_constants.URL);
 		    browserUtils.waitForElementToBeVisible(signOnPg.username);
 		    assertTrue(signOnPg.username.isDisplayed());
 		    

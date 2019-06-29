@@ -23,7 +23,7 @@ import com.project.pages.SignOnPage;
 import com.project.utilities.Applicant_Intake_Submit;
 import com.project.utilities.BrowserUtils;
 import com.project.utilities.Driver;
-import com.project.utilities.EPA_constants;
+import com.project.utilities.Project_constants;
 import com.project.utilities.FormFunctionsUtils;
 import com.project.utilities.IntakeCreator;
 import com.project.utilities.PropertiesReader;
@@ -44,7 +44,7 @@ public class EPA_600_601_602_Triggers {
 	BasePage basePg = new BasePage();
 	IntakeInitiationPage intakePg = new IntakeInitiationPage();
 	IntakeCreator intakeCreator = new IntakeCreator();
-	EPA_constants constant = new EPA_constants();
+	Project_constants constant = new Project_constants();
 	Applicant_Intake_Submit appSubmit = new Applicant_Intake_Submit();
 	FormFunctionsUtils formUtils = new FormFunctionsUtils();
 	CasePage casePg = new CasePage();

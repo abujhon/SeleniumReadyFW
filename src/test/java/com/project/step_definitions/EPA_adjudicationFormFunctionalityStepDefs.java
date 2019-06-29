@@ -18,7 +18,7 @@ import com.project.pages.PersonPage;
 import com.project.pages.SignOnPage;
 import com.project.utilities.BrowserUtils;
 import com.project.utilities.Driver;
-import com.project.utilities.EPA_constants;
+import com.project.utilities.Project_constants;
 import com.project.utilities.FormFunctionsUtils;
 import com.project.utilities.IntakeCreator;
 import com.project.utilities.PropertiesReader;
@@ -41,7 +41,7 @@ public class EPA_adjudicationFormFunctionalityStepDefs {
 
 	@Given("^user navigates to PSS$")
 	public void user_navigates_to_PSS() throws Throwable {
-		Driver.getInstance().get(EPA_constants.URL);
+		Driver.getInstance().get(Project_constants.URL);
 	}
 
 	@When("^user logs in as a Supervisor$")

@@ -18,7 +18,7 @@ import com.project.pages.PersonPage;
 import com.project.pages.PreScreeningPage;
 import com.project.utilities.BrowserUtils;
 import com.project.utilities.Driver;
-import com.project.utilities.EPA_constants;
+import com.project.utilities.Project_constants;
 import com.project.utilities.FormFunctionsUtils;
 import com.project.utilities.IntakeCreator;
 import com.project.utilities.PropertiesReader;
@@ -35,7 +35,7 @@ public class EPA_606_608_triggers {
 	
 	
 	
-	EPA_constants constant = new EPA_constants();
+	Project_constants constant = new Project_constants();
 	BrowserUtils browserUtils = new BrowserUtils();
 	BasePage basePg = new BasePage();
 	FormFunctionsUtils formUtils = new FormFunctionsUtils();
