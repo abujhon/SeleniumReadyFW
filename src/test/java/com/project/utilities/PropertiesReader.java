@@ -1,4 +1,4 @@
-package com.entellitrak_epa.utilities;
+package com.project.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;

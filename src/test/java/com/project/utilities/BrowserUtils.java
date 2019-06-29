@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.entellitrak_epa.utilities;
+package com.project.utilities;
 
 import java.util.Set;
 import org.openqa.selenium.JavascriptExecutor;

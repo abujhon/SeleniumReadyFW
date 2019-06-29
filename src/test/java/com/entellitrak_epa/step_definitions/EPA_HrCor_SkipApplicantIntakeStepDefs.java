@@ -8,14 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.entellitrak_epa.utilities.BrowserUtils;
-import com.entellitrak_epa.utilities.Driver;
-import com.entellitrak_epa.utilities.FormFunctionsUtils;
-import com.entellitrak_epa.utilities.IntakeCreator;
-import com.entellitrak_epa.utilities.PropertiesReader;
 import com.project.pages.BasePage;
 import com.project.pages.IntakeInitiationPage;
 import com.project.pages.SignOnPage;
+import com.project.utilities.BrowserUtils;
+import com.project.utilities.Driver;
+import com.project.utilities.FormFunctionsUtils;
+import com.project.utilities.IntakeCreator;
+import com.project.utilities.PropertiesReader;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

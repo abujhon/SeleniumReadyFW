@@ -7,12 +7,12 @@ import static org.junit.Assert.*;
 
 import org.openqa.selenium.By;
 
-import com.entellitrak_epa.utilities.BrowserUtils;
-import com.entellitrak_epa.utilities.Driver;
-import com.entellitrak_epa.utilities.FormFunctionsUtils;
 import com.project.pages.BasePage;
 import com.project.pages.IntakeInitiationPage;
 import com.project.pages.SignOnPage;
+import com.project.utilities.BrowserUtils;
+import com.project.utilities.Driver;
+import com.project.utilities.FormFunctionsUtils;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

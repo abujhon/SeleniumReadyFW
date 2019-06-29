@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.entellitrak_epa.utilities;
+package com.project.utilities;
 
 import static org.junit.Assert.assertTrue;
 

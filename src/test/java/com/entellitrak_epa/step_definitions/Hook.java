@@ -3,9 +3,11 @@ package com.entellitrak_epa.step_definitions;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.entellitrak_epa.utilities.Driver;
-import com.entellitrak_epa.utilities.FormFunctionsUtils;
-import com.entellitrak_epa.utilities.PropertiesReader;
+
+import com.project.utilities.Driver;
+import com.project.utilities.FormFunctionsUtils;
+import com.project.utilities.PropertiesReader;
+
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;

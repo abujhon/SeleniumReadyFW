@@ -1,4 +1,4 @@
-package com.entellitrak_epa.utilities;
+package com.project.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

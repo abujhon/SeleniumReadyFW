@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.entellitrak_epa.utilities.Driver;
+import com.project.utilities.Driver;
 
 /**
  * @author Edgar Servellon

@@ -10,18 +10,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-import com.entellitrak_epa.utilities.BrowserUtils;
-import com.entellitrak_epa.utilities.Driver;
-import com.entellitrak_epa.utilities.EPA_constants;
-import com.entellitrak_epa.utilities.FormFunctionsUtils;
-import com.entellitrak_epa.utilities.IntakeCreator;
-import com.entellitrak_epa.utilities.PropertiesReader;
 import com.project.pages.AdjudicationPage;
 import com.project.pages.BasePage;
 import com.project.pages.CasePage;
 import com.project.pages.IntakeInitiationPage;
 import com.project.pages.PersonPage;
 import com.project.pages.SignOnPage;
+import com.project.utilities.BrowserUtils;
+import com.project.utilities.Driver;
+import com.project.utilities.EPA_constants;
+import com.project.utilities.FormFunctionsUtils;
+import com.project.utilities.IntakeCreator;
+import com.project.utilities.PropertiesReader;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
