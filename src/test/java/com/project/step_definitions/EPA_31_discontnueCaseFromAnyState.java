@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.entellitrak_epa.step_definitions;
+package com.project.step_definitions;
 
 import static org.junit.Assert.*;
 import java.util.List;
