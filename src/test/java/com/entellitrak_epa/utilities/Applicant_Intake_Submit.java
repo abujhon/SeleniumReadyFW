@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 import java.io.File;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import com.entellitrak_epa.pages.ApplicantIntakeFormPage;
-import com.entellitrak_epa.pages.EntelliSQLpage;
-import com.entellitrak_epa.pages.SignOnPage;
+
 import com.github.javafaker.Faker;
+import com.project.pages.ApplicantIntakeFormPage;
+import com.project.pages.EntelliSQLpage;
+import com.project.pages.SignOnPage;
 
 
 

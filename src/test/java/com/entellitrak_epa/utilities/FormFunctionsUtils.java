@@ -16,9 +16,9 @@ import java.util.Random;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.entellitrak_epa.pages.BasePage;
-import com.entellitrak_epa.pages.SignOnPage;
 import com.github.javafaker.Faker;
+import com.project.pages.BasePage;
+import com.project.pages.SignOnPage;
 
 /**
  * @author Musa

@@ -4,9 +4,7 @@
 package com.entellitrak_epa.step_definitions;
 
 import static org.junit.Assert.*;
-import com.entellitrak_epa.pages.BasePage;
-import com.entellitrak_epa.pages.IntakeInitiationPage;
-import com.entellitrak_epa.pages.SignOnPage;
+
 import com.entellitrak_epa.utilities.Applicant_Intake_Submit;
 import com.entellitrak_epa.utilities.BrowserUtils;
 import com.entellitrak_epa.utilities.Driver;
@@ -14,6 +12,10 @@ import com.entellitrak_epa.utilities.EPA_constants;
 import com.entellitrak_epa.utilities.FormFunctionsUtils;
 import com.entellitrak_epa.utilities.IntakeCreator;
 import com.entellitrak_epa.utilities.PropertiesReader;
+import com.project.pages.BasePage;
+import com.project.pages.IntakeInitiationPage;
+import com.project.pages.SignOnPage;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

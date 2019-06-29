@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.openqa.selenium.support.ui.Select;
 
-import com.entellitrak_epa.pages.IntakeInitiationPage;
+import com.project.pages.IntakeInitiationPage;
 
 public class IntakeCreator {
 

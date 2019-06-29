@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.entellitrak_epa.pages;
+package com.project.pages;
 
 import java.util.List;
 

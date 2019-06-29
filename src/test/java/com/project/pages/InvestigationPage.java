@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.entellitrak_epa.pages;
+package com.project.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
